@@ -4,7 +4,8 @@ body {
   @font-face {
     font-family: dust;
     src: url(dust.TTF);
+
 }
-h1 {
-    font-family: "dust";
+html {
+  font-family: "dust";
 }
