@@ -1,0 +1,11 @@
+body {
+    background-color: #c4b4a5;
+  }
+  @font-face {
+    font-family: dust;
+    src: url(dust.TTF);
+
+}
+html {
+  font-family: "dust";
+}
