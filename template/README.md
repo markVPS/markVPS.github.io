@@ -15,3 +15,9 @@ Will probably remove entirely. Seems very similar to the About section down to t
 Definitely one of the coolest things on the page. The carousel has the option of being moved via dragging the cursor on a computer or phone on a touch screen. Also, the two left and right buttons on the bottom. There is also a "fadeInUp", though I don't see how it is up. Maybe I could have the results show up on this carousel and include the playlist descriptor in where the lorem text is. I also messed with the delay a bit but it seems just right and I will likely not change that.
 # Token
 I messed this section up! It used to count up with an animation all the way up to 100,000 (I think?) Now it just stays at 0 and I cannot fix it. Was probalby going to remove anyways. At this point I realized all of the new div's are in the "fadeInUp" class
+# FAQs
+This accordion will likely be utilized a lot in my implementation. For as complicated previous examples of it seemed, this one seems pretty easy. There is a little bit of a blue highlight whenever you click to close that I don't like, but it's not that much of an issue.
+# Footer
+Obviously every page needs a footer, so I will keep this I'm just not sure how much. All of the links are avaiable on the navbar so having links on the bottom as well seems like a redundancy. I could see how this would help with mobile users since it is easier to reach. I could try to make the navbar on the bottom and remove the footer entirely.
+# Back to Top
+Related to the last point, I think that the navbar on the bottom would remove the need for this.
