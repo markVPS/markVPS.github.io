@@ -1,8 +1,8 @@
 /********** Template CSS **********/
 :root {
-    --primary: #ff0000;
-    --secondary: #0cce53;
-    --light: #F2F8FE;
+    --primary: red;
+    --secondary: yellow;
+    --light: lightblue;
     --dark: #111111;
 }
 
