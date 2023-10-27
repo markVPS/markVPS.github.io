@@ -1,0 +1,2521 @@
+<head>
+    <script async="" src="//www.google-analytics.com/analytics.js"></script><script>
+window.consent_gathered = 1;
+window.is_in_ca = false;
+window.is_in_eu = 0;
+</script><meta name="msvalidate.01" content="DC9BDD5AA0A6394617D74DC653B74FE5"> 
+
+<script>
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-70490370-2', 'auto');
+     ga('send', 'pageview');
+
+   </script>
+<script>
+
+var rating_system = {}
+var rating_system = {'games':{}, 'film':{}, 'music':{}};</script>
+<script>
+var hasTouch = 'ontouchstart' in window;
+var streamBaseUrl = 'wss://glitchwave.com:8088/ws/'
+
+if ( hasTouch ) {
+   document.documentElement.className += ' touch';
+} else {
+   document.documentElement.className += ' noTouch';
+}
+var rym_initdata = {user_id:0, username:'0', login_token:'', theme:''}
+
+var issue_data = {
+   release:[],
+   game:[],
+   film:[],
+   song:[]
+}
+</script>
+
+<title>Best video games of all-time - Glitchwave video games database</title><script>"use strict";!function(){function t(t){if("undefined"==typeof t)throw new Error('Pathformer [constructor]: "element" parameter is required');if(t.constructor===String&&(t=document.getElementById(t),!t))throw new Error('Pathformer [constructor]: "element" parameter is not related to an existing ID');if(t.constructor!==SVGSVGElement)throw new Error('Pathformer [constructor]: "element" parameter must be a string or a SVGelement');this.el=t,this.scan(t)}function e(e,r,n){this.setElement(e),this.setOptions(r),this.setCallback(n),this.frameLength=0,this.currentFrame=0,this.map=[],new t(e),this.mapping(),this.starter()}t.prototype.TYPES=["line","elipse","circle","polygon","polyline","rect"],t.prototype.ATTR_WATCH=["cx","cy","points","r","rx","ry","x","x1","x2","y","y1","y2"],t.prototype.scan=function(t){for(var e,r,n,o,a=t.querySelectorAll(this.TYPES.join(",")),i=0;i<a.length;i++)r=a[i],e=this[r.tagName.toLowerCase()+"ToPath"],n=e(this.parseAttr(r.attributes)),o=this.pathMaker(r,n),r.parentNode.replaceChild(o,r)},t.prototype.lineToPath=function(t){var e={};return e.d="M"+t.x1+","+t.y1+"L"+t.x2+","+t.y2,e},t.prototype.rectToPath=function(t){var e={},r=parseFloat(t.x)||0,n=parseFloat(t.y)||0,o=parseFloat(t.width)||0,a=parseFloat(t.height)||0;return e.d="M"+r+" "+n+" ",e.d+="L"+(r+o)+" "+n+" ",e.d+="L"+(r+o)+" "+(n+a)+" ",e.d+="L"+r+" "+(n+a)+" Z",e},t.prototype.polylineToPath=function(t){for(var e={},r=t.points.split(" "),n="M"+r[0],o=1;o<r.length;o++)-1!==r[o].indexOf(",")&&(n+="L"+r[o]);return e.d=n,e},t.prototype.polygonToPath=function(e){var r=t.prototype.polylineToPath(e);return r.d+="Z",r},t.prototype.elipseToPath=function(t){var e=t.cx-t.rx,r=t.cy,n=parseFloat(t.cx)+parseFloat(t.rx),o=t.cy,a={};return a.d="M"+e+","+r+"A"+t.rx+","+t.ry+" 0,1,1 "+n+","+o+"A"+t.rx+","+t.ry+" 0,1,1 "+e+","+o,a},t.prototype.circleToPath=function(t){var e={},r=t.cx-t.r,n=t.cy,o=parseFloat(t.cx)+parseFloat(t.r),a=t.cy;return e.d="M"+r+","+n+"A"+t.r+","+t.r+" 0,1,1 "+o+","+a+"A"+t.r+","+t.r+" 0,1,1 "+r+","+a,e},t.prototype.pathMaker=function(t,e){var r,n,o=document.createElementNS("http://www.w3.org/2000/svg","path");for(r=0;r<t.attributes.length;r++)n=t.attributes[r],-1===this.ATTR_WATCH.indexOf(n.name)&&o.setAttribute(n.name,n.value);for(r in e)o.setAttribute(r,e[r]);return o},t.prototype.parseAttr=function(t){for(var e,r={},n=0;n<t.length;n++){if(e=t[n],-1!==this.ATTR_WATCH.indexOf(e.name)&&-1!==e.value.indexOf("%"))throw new Error("Pathformer [parseAttr]: a SVG shape got values in percentage. This cannot be transformed into 'path' tags. Please use 'viewBox'.");r[e.name]=e.value}return r};var r,n,o;e.prototype.setElement=function(t){if("undefined"==typeof t)throw new Error('Vivus [constructor]: "element" parameter is required');if(t.constructor===String&&(t=document.getElementById(t),!t))throw new Error('Vivus [constructor]: "element" parameter is not related to an existing ID');if(t.constructor!==SVGSVGElement)throw new Error('Vivus [constructor]: "element" parameter must be a string or a SVGelement');this.el=t},e.prototype.setOptions=function(t){var e=["delayed","async","oneByOne","scenario","scenario-sync"],r=["inViewport","manual","autostart"];if(void 0!==t&&t.constructor!==Object)throw new Error('Vivus [constructor]: "options" parameter must be an object');if(t=t||{},t.type&&-1===e.indexOf(t.type))throw new Error("Vivus [constructor]: "+t.type+" is not an existing animation `type`");if(this.type=t.type||e[0],t.start&&-1===r.indexOf(t.start))throw new Error("Vivus [constructor]: "+t.start+" is not an existing `start` option");if(this.start=t.start||r[0],this.isIE=-1!==navigator.userAgent.indexOf("MSIE"),this.duration=o(t.duration,120),this.delay=o(t.delay,null),this.dashGap=o(t.dashGap,2),this.forceRender=t.hasOwnProperty("forceRender")?!!t.forceRender:this.isIE,this.selfDestroy=!!t.selfDestroy,this.delay>=this.duration)throw new Error("Vivus [constructor]: delay must be shorter than duration")},e.prototype.setCallback=function(t){if(t&&t.constructor!==Function)throw new Error('Vivus [constructor]: "callback" parameter must be a function');this.callback=t||function(){}},e.prototype.mapping=function(){var t,e,r,n,a,i,s,h;for(h=i=s=0,e=this.el.querySelectorAll("path"),t=0;t<e.length;t++)r=e[t],a={el:r,length:Math.ceil(r.getTotalLength())},isNaN(a.length)?window.console&&console.warn&&console.warn("Vivus [mapping]: cannot retrieve a path element length",r):(i+=a.length,this.map.push(a),r.style.strokeDasharray=a.length+" "+(a.length+this.dashGap),r.style.strokeDashoffset=a.length,this.isIE&&(a.length+=this.dashGap),this.renderPath(t));for(i=0===i?1:i,this.delay=null===this.delay?this.duration/3:this.delay,this.delayUnit=this.delay/(e.length>1?e.length-1:1),t=0;t<this.map.length;t++){switch(a=this.map[t],this.type){case"delayed":a.startAt=this.delayUnit*t,a.duration=this.duration-this.delay;break;case"oneByOne":a.startAt=s/i*this.duration,a.duration=a.length/i*this.duration;break;case"async":a.startAt=0,a.duration=this.duration;break;case"scenario-sync":r=e[t],n=this.parseAttr(r),a.startAt=h+(o(n["data-delay"],this.delayUnit)||0),a.duration=o(n["data-duration"],this.duration),h=void 0!==n["data-async"]?a.startAt:a.startAt+a.duration,this.frameLength=Math.max(this.frameLength,a.startAt+a.duration);break;case"scenario":r=e[t],n=this.parseAttr(r),a.startAt=o(n["data-start"],this.delayUnit)||0,a.duration=o(n["data-duration"],this.duration),this.frameLength=Math.max(this.frameLength,a.startAt+a.duration)}s+=a.length,this.frameLength=this.frameLength||this.duration}},e.prototype.drawer=function(){var t=this;this.currentFrame+=this.speed,this.currentFrame<=0?(this.stop(),this.reset()):this.currentFrame>=this.frameLength?(this.stop(),this.currentFrame=this.frameLength,this.trace(),this.selfDestroy&&this.destroy(),this.callback(this)):(this.trace(),this.handle=r(function(){t.drawer()}))},e.prototype.trace=function(){var t,e,r;for(t=0;t<this.map.length;t++)r=this.map[t],e=(this.currentFrame-r.startAt)/r.duration,e=Math.max(0,Math.min(1,e)),r.progress!==e&&(r.progress=e,r.el.style.strokeDashoffset=Math.floor(r.length*(1-e)),this.renderPath(t))},e.prototype.renderPath=function(t){if(this.forceRender&&this.map&&this.map[t]){var e=this.map[t],r=e.el.cloneNode(!0);e.el.parentNode.replaceChild(r,e.el),e.el=r}},e.prototype.starter=function(){switch(this.start){case"manual":return;case"autostart":this.play();break;case"inViewport":var t=this,e=function(){t.isInViewport(t.el,1)&&(t.play(),window.removeEventListener("scroll",e))};window.addEventListener("scroll",e),e()}},e.prototype.reset=function(){return this.currentFrame=0,this.trace(),this},e.prototype.play=function(t){if(t&&"number"!=typeof t)throw new Error("Vivus [play]: invalid speed");return this.speed=t||1,this.handle||this.drawer(),this},e.prototype.stop=function(){return this.handle&&(n(this.handle),delete this.handle),this},e.prototype.destroy=function(){var t,e;for(t=0;t<this.map.length;t++)e=this.map[t],e.el.style.strokeDashoffset=null,e.el.style.strokeDasharray=null,this.renderPath(t)},e.prototype.parseAttr=function(t){var e,r={};if(t&&t.attributes)for(var n=0;n<t.attributes.length;n++)e=t.attributes[n],r[e.name]=e.value;return r},e.prototype.isInViewport=function(t,e){var r=this.scrollY(),n=r+this.getViewportH(),o=t.getBoundingClientRect(),a=o.height,i=r+o.top,s=i+a;return e=e||0,n>=i+a*e&&s>=r},e.prototype.docElem=window.document.documentElement,e.prototype.getViewportH=function(){var t=this.docElem.clientHeight,e=window.innerHeight;return e>t?e:t},e.prototype.scrollY=function(){return window.pageYOffset||this.docElem.scrollTop},r=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(t){return window.setTimeout(t,1e3/60)}}(),n=function(){return window.cancelAnimationFrame||window.webkitCancelAnimationFrame||window.mozCancelAnimationFrame||window.oCancelAnimationFrame||window.msCancelAnimationFrame||function(t){return window.clearTimeout(t)}}(),o=function(t,e){var r=parseInt(t,10);return r>=0?r:e},window.Vivus=e}();</script><style>
+         .beta_nodisplay { display: none; }
+            a, a:link, a:visited { color: #840505; cursor:pointer; }
+            a:active, a:hover { color: #d22c2c; }</style><script>
+if ( localStorage.theme == 'night' ) {
+   var root = document.getElementsByTagName( 'html' )[0];
+   root.className += ' theme_night';
+   rym_initdata.theme = 'night';
+} else {
+   rym_initdata.theme = 'default';
+}
+
+
+function switchThemeTo ( theme ) {
+
+   if ( theme === 'default' ) {
+      localStorage.theme = 'default'
+      rym_initdata.theme = 'default';
+   } else {
+      localStorage.theme = 'night'
+      rym_initdata.theme = 'night';
+   }
+   $('html').removeClass('theme_night theme_default').addClass('theme_' + theme);
+
+}
+
+function switchTheme ( ) {
+
+   if ( $('html').hasClass('theme_night') ) {
+      localStorage.theme = 'default'
+      rym_initdata.theme = 'default';
+   } else {
+      localStorage.theme = 'night'
+      rym_initdata.theme = 'night';
+   }
+   $('html').toggleClass('theme_night')
+
+}
+</script> <meta class="foundation-data-attribute-namespace"><meta class="foundation-mq-xxlarge"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-large"><meta class="foundation-mq-medium"><meta class="foundation-mq-small"><style></style></head><body id="body"><div style="position:fixed;right:0;bottom:0;width:2.5em;height:2.5em;z-index:24000;    background: linear-gradient(130deg, rgba(0,125,255,0.2), rgba(200,200,200,0.5));border-radius:50%;cursor:pointer;" onclick="switchTheme();"></div>
+<link rel="stylesheet" href="/css/min.css?rand=1718615">
+
+<meta name="description" content="The greatest games of all-time, as voted by RYM users.">
+<meta name="keywords" content="">
+
+<script>
+ryminit = window.ryminit || [];
+
+function rymInitPush( a ) {
+   if ( !ryminit ) {
+      a();
+   } else {
+      ryminit.push(a);
+   }
+}
+
+function rymQ( a ) {
+   if ( !ryminit ) {
+      a();
+   } else {
+      ryminit.push(a);
+   }
+}
+
+</script>
+
+<script type="text/javascript">rymInitPush( function() { rym.session.init(0, '0', '');} );</script>
+<script></script>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@GlitchwaveGames">
+    <meta property="og:site_name" content="Glitchwave">
+
+    <meta property="og:url" content="https://glitchwave.com/charts/top/game">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Best video games of all-time - Glitchwave">
+    <meta property="og:description" content="The greatest games of all-time, as voted by RYM users."><meta property="og:image" content="https://e.snmc.io/3.0/img/logo/glitchwave-512.png">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="icon" href="//e.snmc.io/3.0/img/glitchwave.png" type="image/png">
+
+
+<script>
+
+
+window.addEventListener('load', (event) => {
+ window.dom_loaded = true;
+
+ console.log('DOM loaded');
+ if ( typeof (_adjustFillerColumns) !== 'undefined' ) {
+    _adjustFillerColumns() 
+ }
+
+ setTimeout(function () { 
+   if ( typeof (_closeAllStickyAds) !== 'undefined' ) {
+      _closeAllStickyAds() 
+   }
+
+ }, 5000);
+
+
+});
+
+</script>
+       
+
+
+
+<header>
+<div class="header_inner ">
+
+
+    <div onclick="RYMheader.onClickBars()" class="header_profile_bars"><i class="fa fa-bars"></i></div>
+
+
+   <div class="header_profile">
+      <div class="header_profile_logged_out">
+         <span>   
+            <a onclick="return RYMlogin.login();" class="header_profile_login">signup • login</a>
+         </span>
+      </div>
+
+   </div>
+
+
+
+   <div class="header_logo">
+      <a class="main header_item hide-for-touch glitchwave" href="/">
+         <div class="logo_glitchwave_32 logo_header"></div>
+         <span class="logo_name">glitchwave</span>
+      </a>
+
+      <a class="main header_item show-for-touch glitchwave" href="/">
+         <div class="logo_glitchwave_32 logo_header"></div>
+         <span class="logo_name">glitchwave</span>
+      </a>
+
+      <div class="divider mobile_divider"></div>
+      <div class="header_extended_section">
+         <a class="main  header_item sonemic" href="https://sonemic.com/">
+            <div class="logo_sonemic_32 logo_header"></div>
+            <span class="logo_name">Sonemic <span class="header_extended_subtext">music</span></span>
+         </a>
+         <a class="main  header_item cinemos" href="https://cinemos.com/">
+            <div class="logo_cinemos_32 logo_header"></div>
+            <span class="logo_name">Cinemos <span class="header_extended_subtext">film</span></span>
+         </a>
+         <a class="main show-for-touch header_item  glitchwave" href="https://glitchwave.com">
+            <div class="logo_glitchwave_32 logo_header"></div>
+            <span class="logo_name">Glitchwave <span class="header_extended_subtext">video games</span></span>
+         </a>
+      </div>
+   </div>
+
+   <div class="header_links">
+      <div class="divider"></div>
+      <div class="header_charts">
+      <a class="header_charts header_item" href="/charts/">charts</a>
+      </div>
+      <a class="header_item" href="/games/genre/">genres</a>
+
+      
+      <div class="divider"></div>
+   </div>
+   <div class="header_search">
+<div class="ui_chooser_frame" id="ui_chooser_frame_main_search"> <div class="ui_chooser" id="ui_chooser_main_search" data-id="main_search" data-parent-id="" data-allowed-types="games" data-select-first-result="true" data-select-action="navigate" data-placeholder="" data-custom-action="custom_action"> <i class="fa fa-search"></i> <div class="ui_chooser_input_frame"> <input id="ui_chooser_input_main_search" data-id="main_search" placeholder="search games..."> </div> <div class="ui_chooser_type" id="ui_chooser_type_main_search"> <span class="ui_chooser_type_text" id="ui_chooser_type_text_main_search"></span> <i class="fa fa-caret-down"></i> <select onfocus="" data-id="main_search" id="ui_chooser_select_main_search"> <optgroup label="Games"><option value="games">All games</option><option value="game">Game title</option><option value="game_person">Game person</option><option value="company_game">Company</option><option value="game_platform">Platform</option><option value="genre_games">Genre</option><option value="franchise">Franchise</option><option value="character">Character</option><option value="descriptor_games">Descriptor</option></optgroup></select> </div> </div>
+</div>
+</div>   
+
+
+
+
+</div>
+
+</header>
+
+<div class="mobile_header_menu"><a href="/charts/" class="mobile_header_menu_item mobile_header_menu_item_charts">
+      Charts
+</a><a href="/games/genre/" class="mobile_header_menu_item mobile_header_menu_item_genres">
+   Genres
+</a>
+<a href="https://rateyourmusic.com/community/" class="mobile_header_menu_item mobile_header_menu_item_community" target="_blank">
+   Community
+</a></div>
+
+
+<div class="header_border"></div>
+
+<div class="header_error" onclick="$(this).fadeOut();" id="header_error">
+<div class="header_error_close"><i class="fa fa-times-circle"></i></div>
+<div id="header_error_text"></div>
+</div>
+
+<div class="header_message" onclick="$(this).fadeOut();" id="header_message">
+<div class="header_message_close"><i class="fa fa-times-circle"></i></div>
+<div id="header_message_text"></div>
+</div>
+
+<div id="header_toolbar" class="header_toolbar">
+
+<div class="header_toolbar_inner">
+   <div class="header_toolbar_item">
+      <a href="/queues/">Queues</a>
+   </div>
+   <div class="header_toolbar_separator"></div>
+   <div class="header_toolbar_item">
+      <a href="/settings/">Settings</a>
+   </div>
+</div>
+
+</div>
+
+
+<div id="header_expanded" class="header_expanded">
+
+<a class="header_expanded_section" href="/charts/">Charts</a>
+
+<a class="header_expanded_section" href="/games/genre/">Genres</a>
+
+<a class="header_expanded_section" href="https://rateyourmusic.com/community/" rel="noopener" target="_blank" title="While Glitchwave is in beta the games discussion boards are located on RYM">Community</a>
+
+<a class="header_expanded_section" href="/settings/">Settings</a>
+
+
+<div class="header_expanded_section">
+   <a class="header_expanded_link" onclick="return RYMlogin.login();">Login</a>
+</div>
+
+
+</div>
+
+<div id="content_wrapper" class="content_wrapper">
+<div id="content">
+<div id="precontent" style="-webkit-transform: scale3d(1,1,1);"></div>
+<div id="content_cover"></div>
+<div id="total_cover"></div>
+<div id="content_total_cover"></div>
+
+
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7116019216064530" crossorigin="anonymous"></script><script>
+rymInitPush(function() {
+   RYMchartPage.showBuilder();
+   RYMchartPage.selectDateRange( 18000000,20239999);
+});
+</script>
+
+<div class="page_chart_main " id="page_chart_main"> <div class="row "> <div class="  large-8 medium-8 large-push-4 medium-push-4  small-12 columns "> <div class="page_chart_header"> <h1> Top games of all-time</h1> 
+</div> <div class="page_chart_updated"> 
+</div> 
+<div class="page_chart_nav_top"> 
+
+<nav id="nav_chart_nav_top" data-mainid="chart_nav_top" class="ui_nav nav_collection nav_component_ " data-rpp="40" data-page="1" data-num-items="1000" data-num-pages="25" data-nocount="" data-current-page-items="" data-initialized="false" data-callback-component="" data-object="" data-callback-data="" data-sync-id="" data-url-prefix="/charts/top/game/all-time/" data-url-suffix="" data-always-end-with-slash="true" data-prerendered="false" style="visibility: visible;"> <a class="nav_btn nav_prev disabled" id="nav_prev_chart_nav_top"><i class="fa fa-caret-left"></i></a> <span class="nav_page" id="nav_page_chart_nav_top">  
+<span class="nav_page_current" id="nav_page_current_chart_nav_top">1</span><span class="nav_page_slash" id="nav_page_slash_chart_nav_top">/</span><span class="nav_page_total" id="nav_page_num_pages_chart_nav_top">25</span>  
+</span> <span id="nav_popup_chart_nav_top" class="nav_popup" style="display:none"> </span> <a class="nav_next nav_btn " id="nav_next_chart_nav_top" href="/charts/top/game/all-time/2/"> <i class="fa fa-caret-right"></i></a>
+</nav> 
+
+</div> <div class="clearfix"></div> <div class="chart_results chart_results_"> 
+
+<div class="chart_card" id="chart_card_game_49651"> <div class="chart_card_position"> <div class="chart_card_number">1</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">1</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/0caeab2925ca799af5c72c8ec9f97cbb/7761538');" data-delayloadurl="url('//e.snmc.io/lk/s/x/0caeab2925ca799af5c72c8ec9f97cbb/7761538')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/0caeab2925ca799af5c72c8ec9f97cbb/7761538')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.55</span> </div> <div class="chart_card_ratings"> 
+<b>3,067</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>21</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/disco-elysium/" class="game">Disco Elysium</a> 
+
+<div class="chart_release_date">2019</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/isometric-rpg/">isometric RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/police/">police</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/black-comedy/">black comedy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/noir/">noir</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/detective/">detective</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/mystery/">mystery</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_49651"> </div> 
+
+<div class="chart_card" id="chart_card_game_33"> <div class="chart_card_position"> <div class="chart_card_number">2</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">2</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/e3749494fb1ca572020bf51c9a63f359/6951121');" data-delayloadurl="url('//e.snmc.io/lk/s/x/e3749494fb1ca572020bf51c9a63f359/6951121')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/e3749494fb1ca572020bf51c9a63f359/6951121')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.54</span> </div> <div class="chart_card_ratings"> 
+<b>3,690</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>13</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/bloodborne/" class="game">Bloodborne</a> 
+
+<div class="chart_release_date">2015</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/soulslike/">soulslike</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/gothic/">gothic</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/lovecraftian-horror/">Lovecraftian horror</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/dark-fantasy/">dark fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_33"> </div> 
+
+<div class="chart_card" id="chart_card_game_315"> <div class="chart_card_position"> <div class="chart_card_number">3</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">3</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/20e305200e6fc61521897b36b88bb9d4/6453458');" data-delayloadurl="url('//e.snmc.io/lk/s/x/20e305200e6fc61521897b36b88bb9d4/6453458')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/20e305200e6fc61521897b36b88bb9d4/6453458')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.53</span> </div> <div class="chart_card_ratings"> 
+<b>2,921</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>18</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/silent-hill-2/" class="game">Silent Hill 2</a> 
+
+<div class="chart_release_date">2001</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/psychological-horror/">psychological horror</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/survival-horror/">survival horror</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/mystery/">mystery</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_315"> </div> 
+
+<div class="chart_card" id="chart_card_game_187"> <div class="chart_card_position"> <div class="chart_card_number">4</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">4</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/sv/x/56bbd1705055ce9f509f8aaf52f95161/6850224');" data-delayloadurl="url('//e.snmc.io/lk/sv/x/56bbd1705055ce9f509f8aaf52f95161/6850224')" data-delayloadurl2x="url('//e.snmc.io/lk/sv/x/56bbd1705055ce9f509f8aaf52f95161/6850224')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.49</span> </div> <div class="chart_card_ratings"> 
+<b>1,523</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>7</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/mother-3/" class="game">Mother 3</a> 
+
+<div class="chart_release_date">2006</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/jrpg/">JRPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/turn-based-rpg/">turn-based RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/science-fiction/">science fiction</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/fantasy/">fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/postmodernism/">postmodernism</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/dystopian/">dystopian</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_187"> </div> 
+
+<div class="chart_card" id="chart_card_game_726"> <div class="chart_card_position"> <div class="chart_card_number">5</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">5</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/7ade40c9fad5a89e25284d8acc2bc048/6690386');" data-delayloadurl="url('//e.snmc.io/lk/s/x/7ade40c9fad5a89e25284d8acc2bc048/6690386')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/7ade40c9fad5a89e25284d8acc2bc048/6690386')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.48</span> </div> <div class="chart_card_ratings"> 
+<b>2,657</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>7</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/metal-gear-solid-3-snake-eater/" class="game">Metal Gear Solid 3: Snake Eater</a> 
+
+<div class="chart_release_date">2004</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/stealth/">stealth</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/espionage/">espionage</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-adventure/">action-adventure</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/science-fiction/">science fiction</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/cold-war/">Cold War</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/alternate-history/">alternate history</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_726"> </div> 
+
+<div class="chart_card" id="chart_card_game_12"> <div class="chart_card_position"> <div class="chart_card_number">6</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">6</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/sv/x/896c4ad86c9bc86936c1ced0ccf6b60c/7469616');" data-delayloadurl="url('//e.snmc.io/lk/sv/x/896c4ad86c9bc86936c1ced0ccf6b60c/7469616')" data-delayloadurl2x="url('//e.snmc.io/lk/sv/x/896c4ad86c9bc86936c1ced0ccf6b60c/7469616')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.40</span> </div> <div class="chart_card_ratings"> 
+<b>5,180</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>27</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/dark-souls/" class="game">Dark Souls</a> 
+
+<div class="chart_release_date">2011</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/soulslike/">soulslike</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/high-fantasy/">high fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/undead/">undead</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/medieval-fantasy/">medieval fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/dark-fantasy/">dark fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_12"> </div> 
+
+<div class="chart_card" id="chart_card_game_85598"> <div class="chart_card_position"> <div class="chart_card_number">7</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">7</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/25aff1886e84e4da6a912e009474a3be/7550518');" data-delayloadurl="url('//e.snmc.io/lk/s/x/25aff1886e84e4da6a912e009474a3be/7550518')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/25aff1886e84e4da6a912e009474a3be/7550518')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.40</span> </div> <div class="chart_card_ratings"> 
+<b>1,648</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>8</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/outer-wilds/" class="game">Outer Wilds</a> 
+
+<div class="chart_release_date">2019</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/time-loop/">time loop</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/mystery/">mystery</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/open-world/">open world</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/space/">space</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/graphic-adventure/">graphic adventure</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/science-fiction/">science fiction</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/alien/">alien</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_85598"> </div> 
+
+<div class="chart_card" id="chart_card_game_718"> <div class="chart_card_position"> <div class="chart_card_number">8</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">8</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/503f47ebcdc5d7c9c7571a02490754e5/7788174');" data-delayloadurl="url('//e.snmc.io/lk/s/x/503f47ebcdc5d7c9c7571a02490754e5/7788174')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/503f47ebcdc5d7c9c7571a02490754e5/7788174')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.40</span> </div> <div class="chart_card_ratings"> 
+<b>2,552</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>8</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/metal-gear-solid-2-sons-of-liberty/" class="game">Metal Gear Solid 2: Sons of Liberty</a> 
+
+<div class="chart_release_date">2001</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/stealth/">stealth</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/espionage/">espionage</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-adventure/">action-adventure</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/science-fiction/">science fiction</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/postmodernism/">postmodernism</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_718"> </div> 
+
+<div class="chart_card" id="chart_card_game_92308"> <div class="chart_card_position"> <div class="chart_card_number">9</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">9</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/da73310946a0768e0cc5a15886762932/7839425');" data-delayloadurl="url('//e.snmc.io/lk/s/x/da73310946a0768e0cc5a15886762932/7839425')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/da73310946a0768e0cc5a15886762932/7839425')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.41</span> </div> <div class="chart_card_ratings"> 
+<b>450</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>1</b> review
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/half-life-alyx/" class="game">Half-Life: Alyx</a> 
+
+<div class="chart_release_date">2020</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/virtual-reality/">virtual reality</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/first-person-shooter/">first-person shooter</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/science-fiction/">science fiction</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/alien/">alien</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/dystopian/">dystopian</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-horror/">action horror</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_92308"> </div> 
+
+<div class="chart_card" id="chart_card_game_98331"> <div class="chart_card_position"> <div class="chart_card_number">10</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">10</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/147530c6f545a3117c3e114a3a9fa6ab/11129382');" data-delayloadurl="url('//e.snmc.io/lk/s/x/147530c6f545a3117c3e114a3a9fa6ab/11129382')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/147530c6f545a3117c3e114a3a9fa6ab/11129382')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.38</span> </div> <div class="chart_card_ratings"> 
+<b>363</b> ratings
+
+</div> <div class="chart_card_reviews">  </div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/baldur’s-gate-3/" class="game">Baldur’s Gate 3</a> 
+
+<div class="chart_release_date">2023</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/isometric-rpg/">isometric RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/high-fantasy/">high fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/turn-based-rpg/">turn-based RPG</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_98331"> </div> 
+
+<div class="chart_card" id="chart_card_game_70241"> <div class="chart_card_position"> <div class="chart_card_number">11</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">11</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/f08864284d1c48005327a855185de9c1/7073389');" data-delayloadurl="url('//e.snmc.io/lk/s/x/f08864284d1c48005327a855185de9c1/7073389')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/f08864284d1c48005327a855185de9c1/7073389')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.17</span> </div> <div class="chart_card_ratings"> 
+<b>273</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>2</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/umineko-when-they-cry-answer-arcs/" class="game">Umineko When They Cry - Answer Arcs</a> 
+<div class="chart_title_original cl-888">うみねこのなく頃に散</div> 
+<div class="chart_release_date">2009</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/postmodernism/">postmodernism</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/mystery/">mystery</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/sound-novel/">sound novel</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_70241"> </div> 
+
+<div class="chart_card" id="chart_card_game_112971"> <div class="chart_card_position"> <div class="chart_card_number">12</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">12</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/6a785f393487b303c859aceb608f99f9/9217773');" data-delayloadurl="url('//e.snmc.io/lk/s/x/6a785f393487b303c859aceb608f99f9/9217773')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/6a785f393487b303c859aceb608f99f9/9217773')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.35</span> </div> <div class="chart_card_ratings"> 
+<b>3,101</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>14</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/elden-ring/" class="game">Elden Ring</a> 
+
+<div class="chart_release_date">2022</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/soulslike/">soulslike</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/open-world/">open world</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/high-fantasy/">high fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/medieval-fantasy/">medieval fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/dark-fantasy/">dark fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_112971"> </div> 
+
+<div class="chart_card" id="chart_card_game_184"> <div class="chart_card_position"> <div class="chart_card_number">13</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">13</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/sv/x/722b3b754fe39f10b52b34d63ba312f1/9545115');" data-delayloadurl="url('//e.snmc.io/lk/sv/x/722b3b754fe39f10b52b34d63ba312f1/9545115')" data-delayloadurl2x="url('//e.snmc.io/lk/sv/x/722b3b754fe39f10b52b34d63ba312f1/9545115')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.36</span> </div> <div class="chart_card_ratings"> 
+<b>2,455</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>12</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/earthbound/" class="game">EarthBound</a> 
+<div class="chart_title_original cl-888">Mother 2 ギーグの逆襲</div> 
+<div class="chart_release_date">1994</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/jrpg/">JRPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/turn-based-rpg/">turn-based RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/science-fiction/">science fiction</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/low-fantasy/">low fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/comedy/">comedy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_184"> </div> 
+
+<div class="chart_card" id="chart_card_game_1061"> <div class="chart_card_position"> <div class="chart_card_number">14</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">14</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/10199a83386b4f40feac8cfd79e6443f/5288894');" data-delayloadurl="url('//e.snmc.io/lk/s/x/10199a83386b4f40feac8cfd79e6443f/5288894')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/10199a83386b4f40feac8cfd79e6443f/5288894')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.34</span> </div> <div class="chart_card_ratings"> 
+<b>2,713</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>11</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/the-legend-of-zelda-majoras-mask/" class="game">The Legend of Zelda: Majora's Mask</a> 
+<div class="chart_title_original cl-888">ゼルダの伝説ムジュラの仮面</div> 
+<div class="chart_release_date">2000</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/action-adventure/">action-adventure</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/high-fantasy/">high fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/time-loop/">time loop</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/dark-fantasy/">dark fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_1061"> </div> 
+
+<div class="chart_card" id="chart_card_game_27"> <div class="chart_card_position"> <div class="chart_card_number">15</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">15</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/613e0d54b6bbc4bb886f81d9818d5169/5274830');" data-delayloadurl="url('//e.snmc.io/lk/s/x/613e0d54b6bbc4bb886f81d9818d5169/5274830')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/613e0d54b6bbc4bb886f81d9818d5169/5274830')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.34</span> </div> <div class="chart_card_ratings"> 
+<b>1,671</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>8</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/deus-ex/" class="game">Deus Ex</a> 
+
+<div class="chart_release_date">2000</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/cyberpunk/">cyberpunk</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/first-person-shooter/">first-person shooter</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/western-rpg/">western RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-rpg/">action RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/immersive-sim/">immersive sim</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/dystopian/">dystopian</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_27"> </div> 
+
+<div class="chart_card" id="chart_card_game_131716"> <div class="chart_card_position"> <div class="chart_card_number">16</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">16</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/50e7697b4e41a54ecfb2f3b5ba6bcbca/10370764');" data-delayloadurl="url('//e.snmc.io/lk/s/x/50e7697b4e41a54ecfb2f3b5ba6bcbca/10370764')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/50e7697b4e41a54ecfb2f3b5ba6bcbca/10370764')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.36</span> </div> <div class="chart_card_ratings"> 
+<b>702</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>7</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/resident-evil-4.f1/" class="game">Resident Evil 4</a> 
+
+<div class="chart_release_date">2023</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/action-horror/">action horror</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/third-person-shooter/">third-person shooter</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/occult/">occult</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_131716"> </div> 
+
+<div class="chart_card" id="chart_card_game_79777"> <div class="chart_card_position"> <div class="chart_card_number">17</div> 
+<div class="chart_card_movement movement_up"><i class="fa fa-caret-up"></i> 1</div> 
+
+
+</div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">17</div> 
+<div class="chart_position_sm_movement movement_up"><i class="fa fa-caret-up"></i> 1</div> 
+
+
+
+</div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/35aa6d5ad90d878116a1dbd3f2323468/8867385');" data-delayloadurl="url('//e.snmc.io/lk/s/x/35aa6d5ad90d878116a1dbd3f2323468/8867385')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/35aa6d5ad90d878116a1dbd3f2323468/8867385')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.30</span> </div> <div class="chart_card_ratings"> 
+<b>485</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>1</b> review
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/pathologic-2/" class="game">Pathologic 2</a> 
+
+<div class="chart_release_date">2019</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/survival/">survival</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/epidemic/">epidemic</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/postmodernism/">postmodernism</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/psychological-horror/">psychological horror</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/dystopian/">dystopian</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/open-world/">open world</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_79777"> </div> 
+
+<div class="chart_card" id="chart_card_game_429"> <div class="chart_card_position"> <div class="chart_card_number">18</div> 
+
+<div class="chart_card_movement movement_down"><i class="fa fa-caret-down"></i> 1</div> 
+
+</div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">18</div> 
+
+<div class="chart_position_sm_movement movement_down"><i class="fa fa-caret-down"></i> 1</div> 
+
+
+</div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/sv/x/99f0f505599a233d11359299d0008433/7668239');" data-delayloadurl="url('//e.snmc.io/lk/sv/x/99f0f505599a233d11359299d0008433/7668239')" data-delayloadurl2x="url('//e.snmc.io/lk/sv/x/99f0f505599a233d11359299d0008433/7668239')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.33</span> </div> <div class="chart_card_ratings"> 
+<b>2,065</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>9</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/chrono-trigger/" class="game">Chrono Trigger</a> 
+<div class="chart_title_original cl-888">クロノ・トリガー</div> 
+<div class="chart_release_date">1995</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/jrpg/">JRPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/time-travel/">time travel</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/high-fantasy/">high fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/turn-based-rpg/">turn-based RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/medieval-fantasy/">medieval fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_429"> </div> 
+
+<div class="chart_card" id="chart_card_game_1297"> <div class="chart_card_position"> <div class="chart_card_number">19</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">19</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/2a53a0bb06334403af1524b07ed74625/10837695');" data-delayloadurl="url('//e.snmc.io/lk/s/x/2a53a0bb06334403af1524b07ed74625/10837695')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/2a53a0bb06334403af1524b07ed74625/10837695')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.33</span> </div> <div class="chart_card_ratings"> 
+<b>6,741</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>18</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/portal-2/" class="game">Portal 2</a> 
+
+<div class="chart_release_date">2011</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/puzzle-platformer/">puzzle platformer</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/physics-puzzle/">physics puzzle</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/science-fiction/">science fiction</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/comedy/">comedy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/3d-platformer/">3D platformer</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/robot/">robot</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/first-person-puzzler/">first-person puzzler</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_1297"> </div> 
+
+<div class="chart_card" id="chart_card_game_76686"> <div class="chart_card_position"> <div class="chart_card_number">20</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">20</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/sv/x/0c7947ba729834bbb7ae15301a057be6/7120894');" data-delayloadurl="url('//e.snmc.io/lk/sv/x/0c7947ba729834bbb7ae15301a057be6/7120894')" data-delayloadurl2x="url('//e.snmc.io/lk/sv/x/0c7947ba729834bbb7ae15301a057be6/7120894')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.32</span> </div> <div class="chart_card_ratings"> 
+<b>2,356</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>6</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/sekiro-shadows-die-twice/" class="game">Sekiro: Shadows Die Twice</a> 
+
+<div class="chart_release_date">2019</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/feudal-japan/">feudal Japan</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-adventure/">action-adventure</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/ninja/">ninja</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_76686"> </div> 
+
+<div class="chart_card" id="chart_card_game_49326"> <div class="chart_card_position"> <div class="chart_card_number">21</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">21</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/cfaa2f501a8730cb828ff7d68ce432cc/5299152');" data-delayloadurl="url('//e.snmc.io/lk/s/x/cfaa2f501a8730cb828ff7d68ce432cc/5299152')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/cfaa2f501a8730cb828ff7d68ce432cc/5299152')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.30</span> </div> <div class="chart_card_ratings"> 
+<b>3,990</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>14</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/hollow-knight/" class="game">Hollow Knight</a> 
+
+<div class="chart_release_date">2017</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/metroidvania/">metroidvania</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/fantasy/">fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/soulsvania/">soulsvania</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/dark-fantasy/">dark fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_49326"> </div> 
+
+<div class="chart_card" id="chart_card_game_135869"> <div class="chart_card_position"> <div class="chart_card_number">22</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">22</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/sv/x/4b16a6161c21cafe43e4bddc340952dc/10964209');" data-delayloadurl="url('//e.snmc.io/lk/sv/x/4b16a6161c21cafe43e4bddc340952dc/10964209')" data-delayloadurl2x="url('//e.snmc.io/lk/sv/x/4b16a6161c21cafe43e4bddc340952dc/10964209')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.32</span> </div> <div class="chart_card_ratings"> 
+<b>973</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>4</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/the-legend-of-zelda-tears-of-the-kingdom/" class="game">The Legend of Zelda: Tears of the Kingdom</a> 
+<div class="chart_title_original cl-888">ゼルダの伝説 ティアーズ オブ ザ キングダム</div> 
+<div class="chart_release_date">2023</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/open-world/">open world</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-adventure/">action-adventure</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/high-fantasy/">high fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_135869"> </div> 
+
+<div class="chart_card" id="chart_card_game_72028"> <div class="chart_card_position"> <div class="chart_card_number">23</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">23</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/a21902fc72c34f67d92978e1990e273d/7238621');" data-delayloadurl="url('//e.snmc.io/lk/s/x/a21902fc72c34f67d92978e1990e273d/7238621')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/a21902fc72c34f67d92978e1990e273d/7238621')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.30</span> </div> <div class="chart_card_ratings"> 
+<b>3,863</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>12</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/red-dead-redemption-2/" class="game">Red Dead Redemption 2</a> 
+
+<div class="chart_release_date">2018</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/western/">western</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/open-world/">open world</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/third-person-shooter/">third-person shooter</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-adventure/">action-adventure</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/crime/">crime</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_72028"> </div> 
+
+<div class="chart_card" id="chart_card_game_1969"> <div class="chart_card_position"> <div class="chart_card_number">24</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">24</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/96a35239288c2c059defd04ee863c29e/7405537');" data-delayloadurl="url('//e.snmc.io/lk/s/x/96a35239288c2c059defd04ee863c29e/7405537')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/96a35239288c2c059defd04ee863c29e/7405537')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.32</span> </div> <div class="chart_card_ratings"> 
+<b>3,411</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>15</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/resident-evil-4/" class="game">Resident Evil 4</a> 
+
+<div class="chart_release_date">2005</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/action-horror/">action horror</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/third-person-shooter/">third-person shooter</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/occult/">occult</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_1969"> </div> 
+
+<div class="chart_card" id="chart_card_game_21"> <div class="chart_card_position"> <div class="chart_card_number">25</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">25</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/f4024c16e9a338952a020dcbfad99b4a/5275126');" data-delayloadurl="url('//e.snmc.io/lk/s/x/f4024c16e9a338952a020dcbfad99b4a/5275126')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/f4024c16e9a338952a020dcbfad99b4a/5275126')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.31</span> </div> <div class="chart_card_ratings"> 
+<b>760</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>4</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/planescape-torment/" class="game">Planescape: Torment</a> 
+
+<div class="chart_release_date">1999</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/isometric-rpg/">isometric RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/high-fantasy/">high fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/mystery/">mystery</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/dark-fantasy/">dark fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_21"> </div> 
+
+<div class="chart_card" id="chart_card_game_1835"> <div class="chart_card_position"> <div class="chart_card_number">26</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">26</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/dd4c762d22a3c2488e524f6e995af86b/6453285');" data-delayloadurl="url('//e.snmc.io/lk/s/x/dd4c762d22a3c2488e524f6e995af86b/6453285')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/dd4c762d22a3c2488e524f6e995af86b/6453285')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.30</span> </div> <div class="chart_card_ratings"> 
+<b>5,098</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>13</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/fallout-new-vegas/" class="game">Fallout: New Vegas</a> 
+
+<div class="chart_release_date">2010</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/western-rpg/">western RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/post-apocalyptic/">post-apocalyptic</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/open-world/">open world</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-rpg/">action RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/science-fiction/">science fiction</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/first-person-shooter/">first-person shooter</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_1835"> </div> 
+
+<div class="chart_card" id="chart_card_game_656"> <div class="chart_card_position"> <div class="chart_card_number">27</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">27</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/fcbe8bdf20ef2b664830beb257a42c17/11286358');" data-delayloadurl="url('//e.snmc.io/lk/s/x/fcbe8bdf20ef2b664830beb257a42c17/11286358')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/fcbe8bdf20ef2b664830beb257a42c17/11286358')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.34</span> </div> <div class="chart_card_ratings"> 
+<b>423</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>4</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/thief-ii-the-metal-age/" class="game">Thief II: The Metal Age</a> 
+
+<div class="chart_release_date">2000</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/immersive-sim/">immersive sim</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/stealth/">stealth</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/steampunk/">steampunk</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-adventure/">action-adventure</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/gothic/">gothic</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_656"> </div> 
+
+<div class="chart_card" id="chart_card_game_591"> <div class="chart_card_position"> <div class="chart_card_number">28</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">28</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/sv/x/92d998ce749c6e2ca5cb8fed25b4d416/7002842');" data-delayloadurl="url('//e.snmc.io/lk/sv/x/92d998ce749c6e2ca5cb8fed25b4d416/7002842')" data-delayloadurl2x="url('//e.snmc.io/lk/sv/x/92d998ce749c6e2ca5cb8fed25b4d416/7002842')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.30</span> </div> <div class="chart_card_ratings"> 
+<b>2,248</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>6</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/super-metroid/" class="game">Super Metroid</a> 
+<div class="chart_title_original cl-888">スーパーメトロイド</div> 
+<div class="chart_release_date">1994</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/metroidvania/">metroidvania</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/alien/">alien</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/space/">space</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_591"> </div> 
+
+<div class="chart_card" id="chart_card_game_891"> <div class="chart_card_position"> <div class="chart_card_number">29</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">29</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/sv/x/e8f11e88813797c58f92731a90010097/6843228');" data-delayloadurl="url('//e.snmc.io/lk/sv/x/e8f11e88813797c58f92731a90010097/6843228')" data-delayloadurl2x="url('//e.snmc.io/lk/sv/x/e8f11e88813797c58f92731a90010097/6843228')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.31</span> </div> <div class="chart_card_ratings"> 
+<b>1,314</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>5</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/paper-mario-the-thousand-year-door/" class="game">Paper Mario: The Thousand-Year Door</a> 
+<div class="chart_title_original cl-888">ペーパーマリオRPG</div> 
+<div class="chart_release_date">2004</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/turn-based-rpg/">turn-based RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/jrpg/">JRPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/comedy/">comedy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/fantasy/">fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_891"> </div> 
+
+<div class="chart_card" id="chart_card_game_53078"> <div class="chart_card_position"> <div class="chart_card_number">30</div> 
+<div class="chart_card_movement movement_up"><i class="fa fa-caret-up"></i> 1</div> 
+
+
+</div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">30</div> 
+<div class="chart_position_sm_movement movement_up"><i class="fa fa-caret-up"></i> 1</div> 
+
+
+
+</div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/9e8dbcb7c01c3ddaa234fc84ddcaf94b/9129148');" data-delayloadurl="url('//e.snmc.io/lk/s/x/9e8dbcb7c01c3ddaa234fc84ddcaf94b/9129148')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/9e8dbcb7c01c3ddaa234fc84ddcaf94b/9129148')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.12</span> </div> <div class="chart_card_ratings"> 
+<b>338</b> ratings
+
+</div> <div class="chart_card_reviews">  </div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/umineko-when-they-cry/" class="game">Umineko When They Cry</a> 
+<div class="chart_title_original cl-888">うみねこのなく頃に</div> 
+<div class="chart_release_date">2007</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/mystery/">mystery</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/kinetic-novel/">kinetic novel</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/sound-novel/">sound novel</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_53078"> </div> 
+
+<div class="chart_card" id="chart_card_game_45440"> <div class="chart_card_position"> <div class="chart_card_number">31</div> 
+
+<div class="chart_card_movement movement_down"><i class="fa fa-caret-down"></i> 1</div> 
+
+</div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">31</div> 
+
+<div class="chart_position_sm_movement movement_down"><i class="fa fa-caret-down"></i> 1</div> 
+
+
+</div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/272095121271e85ee599bd4d1649a321/6443729');" data-delayloadurl="url('//e.snmc.io/lk/s/x/272095121271e85ee599bd4d1649a321/6443729')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/272095121271e85ee599bd4d1649a321/6443729')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.28</span> </div> <div class="chart_card_ratings"> 
+<b>5,329</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>14</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/the-legend-of-zelda-breath-of-the-wild/" class="game">The Legend of Zelda: Breath of the Wild</a> 
+<div class="chart_title_original cl-888">ゼルダの伝説 ブレス オブ ザ ワイルド</div> 
+<div class="chart_release_date">2017</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/open-world/">open world</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-adventure/">action-adventure</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/high-fantasy/">high fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_45440"> </div> 
+
+<div class="chart_card" id="chart_card_game_496"> <div class="chart_card_position"> <div class="chart_card_number">32</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">32</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/sv/x/7dbdb2656cccd48bbab0f42c4e0f7ab8/9000198');" data-delayloadurl="url('//e.snmc.io/lk/sv/x/7dbdb2656cccd48bbab0f42c4e0f7ab8/9000198')" data-delayloadurl2x="url('//e.snmc.io/lk/sv/x/7dbdb2656cccd48bbab0f42c4e0f7ab8/9000198')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.26</span> </div> <div class="chart_card_ratings"> 
+<b>2,573</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>13</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/shadow-of-the-colossus/" class="game">Shadow of the Colossus</a> 
+
+<div class="chart_release_date">2005</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/action-adventure/">action-adventure</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/fantasy/">fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/giant-monster/">giant monster</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_496"> </div> 
+
+<div class="chart_card" id="chart_card_game_5329"> <div class="chart_card_position"> <div class="chart_card_number">33</div> 
+<div class="chart_card_movement movement_up"><i class="fa fa-caret-up"></i> 1</div> 
+
+
+</div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">33</div> 
+<div class="chart_position_sm_movement movement_up"><i class="fa fa-caret-up"></i> 1</div> 
+
+
+
+</div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/15e42b689ae41c418ff9acb9b9b4ce98/9286025');" data-delayloadurl="url('//e.snmc.io/lk/s/x/15e42b689ae41c418ff9acb9b9b4ce98/9286025')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/15e42b689ae41c418ff9acb9b9b4ce98/9286025')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.29</span> </div> <div class="chart_card_ratings"> 
+<b>541</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>3</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/we-love-katamari/" class="game">We Love Katamari</a> 
+<div class="chart_title_original cl-888">みんな大好き塊魂</div> 
+<div class="chart_release_date">2005</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/rolling-platformer/">rolling platformer</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/surrealism/">surrealism</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-puzzle/">action puzzle</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/fantasy/">fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/destruction/">destruction</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_5329"> </div> 
+
+<div class="chart_card" id="chart_card_game_699"> <div class="chart_card_position"> <div class="chart_card_number">34</div> 
+
+<div class="chart_card_movement movement_down"><i class="fa fa-caret-down"></i> 1</div> 
+
+</div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">34</div> 
+
+<div class="chart_position_sm_movement movement_down"><i class="fa fa-caret-down"></i> 1</div> 
+
+
+</div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/sv/x/535d72e9dba364b58dfb7251dd02d8a6/6455687');" data-delayloadurl="url('//e.snmc.io/lk/sv/x/535d72e9dba364b58dfb7251dd02d8a6/6455687')" data-delayloadurl2x="url('//e.snmc.io/lk/sv/x/535d72e9dba364b58dfb7251dd02d8a6/6455687')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.28</span> </div> <div class="chart_card_ratings"> 
+<b>1,710</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>11</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/castlevania-symphony-of-the-night/" class="game">Castlevania: Symphony of the Night</a> 
+<div class="chart_title_original cl-888">悪魔城ドラキュラX 月下の夜想曲</div> 
+<div class="chart_release_date">1997</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/metroidvania/">metroidvania</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/vampire/">vampire</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/gothic/">gothic</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/dark-fantasy/">dark fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/fantasy/">fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_699"> </div> 
+
+<div class="chart_card" id="chart_card_game_4896"> <div class="chart_card_position"> <div class="chart_card_number">35</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">35</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/6c47ae2df0045ed742deba960861e899/5282217');" data-delayloadurl="url('//e.snmc.io/lk/s/x/6c47ae2df0045ed742deba960861e899/5282217')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/6c47ae2df0045ed742deba960861e899/5282217')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.24</span> </div> <div class="chart_card_ratings"> 
+<b>3,116</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>13</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/persona-5/" class="game">Persona 5</a> 
+
+<div class="chart_release_date">2016</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/jrpg/">JRPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/turn-based-rpg/">turn-based RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/low-fantasy/">low fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/social-simulation/">social simulation</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_4896"> </div> 
+
+<div class="chart_card" id="chart_card_game_14891"> <div class="chart_card_position"> <div class="chart_card_number">36</div> 
+<div class="chart_card_movement movement_up"><i class="fa fa-caret-up"></i> 1</div> 
+
+
+</div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">36</div> 
+<div class="chart_position_sm_movement movement_up"><i class="fa fa-caret-up"></i> 1</div> 
+
+
+
+</div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/ebf8cdafbfc5b5795517339771e889bc/8640580');" data-delayloadurl="url('//e.snmc.io/lk/s/x/ebf8cdafbfc5b5795517339771e889bc/8640580')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/ebf8cdafbfc5b5795517339771e889bc/8640580')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.26</span> </div> <div class="chart_card_ratings"> 
+<b>2,115</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>13</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/yakuza-0/" class="game">Yakuza 0</a> 
+<div class="chart_title_original cl-888">龍が如く0 誓いの場所</div> 
+<div class="chart_release_date">2015</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/crime/">crime</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/beat-em-up/">beat 'em up</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/open-world/">open world</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/action-adventure/">action-adventure</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_14891"> </div> 
+
+<div class="chart_card" id="chart_card_game_3541"> <div class="chart_card_position"> <div class="chart_card_number">37</div> 
+
+<div class="chart_card_movement movement_down"><i class="fa fa-caret-down"></i> 1</div> 
+
+</div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">37</div> 
+
+<div class="chart_position_sm_movement movement_down"><i class="fa fa-caret-down"></i> 1</div> 
+
+
+</div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/b754d9a5fc6448589ea050c8c1530d3c/9581015');" data-delayloadurl="url('//e.snmc.io/lk/s/x/b754d9a5fc6448589ea050c8c1530d3c/9581015')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/b754d9a5fc6448589ea050c8c1530d3c/9581015')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.27</span> </div> <div class="chart_card_ratings"> 
+<b>842</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>2</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/phoenix-wright-ace-attorney-−-trials-and-tribulations/" class="game">Phoenix Wright: Ace Attorney − Trials and Tribulations</a> 
+<div class="chart_title_original cl-888">逆転裁判3</div> 
+<div class="chart_release_date">2004</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/adv/">ADV</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/mystery/">mystery</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/crime-investigation/">crime investigation</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/comedy/">comedy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_3541"> </div> 
+
+<div class="chart_card" id="chart_card_game_97261"> <div class="chart_card_position"> <div class="chart_card_number">38</div>  </div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">38</div>  </div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/81ff37b99a54461a9762704244584bd6/11275656');" data-delayloadurl="url('//e.snmc.io/lk/s/x/81ff37b99a54461a9762704244584bd6/11275656')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/81ff37b99a54461a9762704244584bd6/11275656')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.27</span> </div> <div class="chart_card_ratings"> 
+<b>784</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>2</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/ultrakill/" class="game">ULTRAKILL</a> 
+
+
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/retro-fps/">retro FPS</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/science-fiction/">science fiction</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/occult/">occult</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/robot/">robot</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/movement-shooter/">movement shooter</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_97261"> </div> 
+
+<div class="chart_card" id="chart_card_game_43"> <div class="chart_card_position"> <div class="chart_card_number">39</div> 
+<div class="chart_card_movement movement_up"><i class="fa fa-caret-up"></i> 1</div> 
+
+
+</div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">39</div> 
+<div class="chart_position_sm_movement movement_up"><i class="fa fa-caret-up"></i> 1</div> 
+
+
+
+</div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/683ffdc4a31b18dbd3d1eb6054be985c/6848673');" data-delayloadurl="url('//e.snmc.io/lk/s/x/683ffdc4a31b18dbd3d1eb6054be985c/6848673')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/683ffdc4a31b18dbd3d1eb6054be985c/6848673')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.25</span> </div> <div class="chart_card_ratings"> 
+<b>1,391</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>7</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/final-fantasy-vi/" class="game">Final Fantasy VI</a> 
+<div class="chart_title_original cl-888">ファイナルファンタジーVI</div> 
+<div class="chart_release_date">1994</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/jrpg/">JRPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/turn-based-rpg/">turn-based RPG</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/steampunk/">steampunk</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/high-fantasy/">high fantasy</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_43"> </div> 
+
+<div class="chart_card" id="chart_card_game_1599"> <div class="chart_card_position"> <div class="chart_card_number">40</div> 
+
+<div class="chart_card_movement movement_down"><i class="fa fa-caret-down"></i> 1</div> 
+
+</div> <div class="chart_card_info"> <div class="chart_card_image_frame"> <div class="chart_position_sm"> <div class="chart_position_sm_num">40</div> 
+
+<div class="chart_position_sm_movement movement_down"><i class="fa fa-caret-down"></i> 1</div> 
+
+
+</div> <div class="clearfix"></div> 
+<div class="chart_card_image delayed_background_img" style="background:url('//e.snmc.io/lk/s/x/413eae8e06161d0b33fbde6be18de21f/8597594');" data-delayloadurl="url('//e.snmc.io/lk/s/x/413eae8e06161d0b33fbde6be18de21f/8597594')" data-delayloadurl2x="url('//e.snmc.io/lk/s/x/413eae8e06161d0b33fbde6be18de21f/8597594')"></div> 
+
+</div> </div> <div class="chart_card_metadata"> <div class="chart_card_score"> <span class="rating_number rating_number_game"> 4.23</span> </div> <div class="chart_card_ratings"> 
+<b>736</b> ratings
+
+</div> <div class="chart_card_reviews"> 
+<b>2</b> reviews
+</div> </div> <div class="chart_card_top"> <div class="chart_card_title_line"> <div class="chart_title"> 
+
+<a href="/game/killer7/" class="game">Killer7</a> 
+<div class="chart_title_original cl-888">キラー7</div> 
+<div class="chart_release_date">2005</div> 
+</div> </div> 
+
+<div class="chart_genres chart_pri_genres"> 
+
+<a class="genre_ comma_separated" href="/games/genre/action-adventure/">action-adventure</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/surrealism/">surrealism</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/postmodernism/">postmodernism</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/low-fantasy/">low fantasy</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/rail-shooter/">rail shooter</a> 
+
+
+<a class="genre_ comma_separated" href="/games/genre/alternate-history/">alternate history</a> 
+</div> 
+
+
+</div> <div class="chart_card_catalog"> 
+</div> <div class="chart_card_bottom"> 
+
+
+</div> 
+<div class="clearfix"></div>
+</div> <div class="chart_card_issues" id="chart_card_issues_game_1599"> </div> 
+</div> <div class="page_chart_nav_bottom"> 
+
+<nav id="nav_chart_nav_bottom" data-mainid="chart_nav_bottom" class="ui_nav nav_collection nav_component_ " data-rpp="40" data-page="1" data-num-items="1000" data-num-pages="25" data-nocount="" data-current-page-items="" data-initialized="false" data-callback-component="" data-object="" data-callback-data="" data-sync-id="" data-url-prefix="/charts/top/game/all-time/" data-url-suffix="" data-always-end-with-slash="true" data-prerendered="false" style="visibility: visible;"> <a class="nav_btn nav_prev disabled" id="nav_prev_chart_nav_bottom"><i class="fa fa-caret-left"></i></a> <span class="nav_page" id="nav_page_chart_nav_bottom">  
+<span class="nav_page_current" id="nav_page_current_chart_nav_bottom">1</span><span class="nav_page_slash" id="nav_page_slash_chart_nav_bottom">/</span><span class="nav_page_total" id="nav_page_num_pages_chart_nav_bottom">25</span>  
+</span> <span id="nav_popup_chart_nav_bottom" class="nav_popup" style="display:none"> </span> <a class="nav_next nav_btn " id="nav_next_chart_nav_bottom" href="/charts/top/game/all-time/2/"> <i class="fa fa-caret-right"></i></a>
+</nav> 
+</div> 
+</div> 
+<div class="large-4 medium-4 large-pull-8 medium-pull-8 small-12 columns "> <div class="page_chart_section_blurb"> <p>With Sonemic Charts, you can build a chart based on anything you want. </p> <p>Choose any combination of genres, influences, styles, moods, locations, languages, years, and much more! You can save your custom charts so that you can revisit them over time. 
+</p> <p>Try it by pressing the "Build chart" button or look below to see what charts others are making.</p> <div class="btn blue_btn page_chart_build_btn" onclick="$('#page_chart').toggleClass('mode_build');">Build chart</div> </div> 
+</div> </div> 
+<div class="page_chart_overlay" onclick="$('#page_chart').toggleClass('mode_build');"> </div> <div class="page_chart_main_ui" id="page_chart_main_ui"> <div class="page_chart_background" onclick="$('#page_chart').toggleClass('mode_build');"> <span style="cursor:pointer">Close <i class="fa fa-times"></i></span> </div> <div class="page_chart_main_ui_inner"> 
+
+<h3 class="chart_builder_header">Chart builder</h3>
+
+
+
+<div class="chart_section chart_type">
+Chart type
+</div>
+<input type="hidden" id="scope" name="scope" value="games">
+
+
+<div class="chart_type_chooser">
+<div onclick="RYMchartPage.selectChartType('top');" id="chart_type_btn_top" class="chart_type_btn  chart_games selected" tabindex="101">Best</div><div onclick="RYMchartPage.selectChartType('popular');" id="chart_type_btn_popular" class="chart_type_btn chart_games " tabindex="102">Popular</div><div onclick="RYMchartPage.selectChartType('esoteric');" id="chart_type_btn_esoteric" class="chart_type_btn chart_games " tabindex="102">Esoteric</div><div onclick="RYMchartPage.selectChartType('bottom');" id="chart_type_btn_bottom" class="chart_type_btn chart_games " tabindex="103">Worst</div>
+</div>
+<input type="hidden" id="chart_type" name="chart_type" value="top">
+
+<input type="hidden" id="chart_object" name="chart_object" value="game">
+<input type="hidden" id="release_types" name="release_types" value="[1]"><div id="errors_release_types" class="chart_error"></div>
+
+<div class="chart_section chart_releases">
+Date range
+</div>
+
+<div class="date_range_chooser">
+<div id="date_range_all_time" onclick="RYMchartPage.selectDateType('all_time');" class="date_range_btn selected">All-time</div><div id="date_range_range" onclick="RYMchartPage.selectDateType('range');" class="date_range_btn">Years / Decades</div><div id="date_range_custom" onclick="RYMchartPage.selectDateType('custom');" class="date_range_btn">Custom</div>
+</div><div class="date_year_chooser" id="date_year_chooser" style="display: none;"><div class="date_year_chooser_row">
+            <div id="date_year_chooser_decade_2020" onmousedown="RYMchartPage.onMouseDownDateChooserDecade(event,2020);" onmouseup="RYMchartPage.onMouseUpDateChooserDecade(event,2020);" onmouseover="RYMchartPage.onMouseOverDateChooserDecade(event,2020);" class="date_year_chooser_decade_btn">2020s</div><div id="date_year_chooser_year_2020" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2020);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2020);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2020);" style="width:20.0%">2020</div><div id="date_year_chooser_year_2021" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2021);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2021);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2021);" style="width:20.0%">2021</div><div id="date_year_chooser_year_2022" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2022);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2022);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2022);" style="width:20.0%">2022</div><div id="date_year_chooser_year_2023" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2023);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2023);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2023);" style="width:20.0%">2023</div></div><div class="date_year_chooser_row">
+            <div id="date_year_chooser_decade_2010" onmousedown="RYMchartPage.onMouseDownDateChooserDecade(event,2010);" onmouseup="RYMchartPage.onMouseUpDateChooserDecade(event,2010);" onmouseover="RYMchartPage.onMouseOverDateChooserDecade(event,2010);" class="date_year_chooser_decade_btn">2010s</div><div id="date_year_chooser_year_2010" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2010);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2010);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2010);" data-tiptip="2010">10</div><div id="date_year_chooser_year_2011" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2011);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2011);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2011);" data-tiptip="2011">11</div><div id="date_year_chooser_year_2012" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2012);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2012);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2012);" data-tiptip="2012">12</div><div id="date_year_chooser_year_2013" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2013);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2013);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2013);" data-tiptip="2013">13</div><div id="date_year_chooser_year_2014" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2014);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2014);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2014);" data-tiptip="2014">14</div><div id="date_year_chooser_year_2015" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2015);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2015);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2015);" data-tiptip="2015">15</div><div id="date_year_chooser_year_2016" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2016);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2016);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2016);" data-tiptip="2016">16</div><div id="date_year_chooser_year_2017" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2017);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2017);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2017);" data-tiptip="2017">17</div><div id="date_year_chooser_year_2018" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2018);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2018);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2018);" data-tiptip="2018">18</div><div id="date_year_chooser_year_2019" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2019);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2019);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2019);" data-tiptip="2019">19</div></div><div class="date_year_chooser_row">
+            <div id="date_year_chooser_decade_2000" onmousedown="RYMchartPage.onMouseDownDateChooserDecade(event,2000);" onmouseup="RYMchartPage.onMouseUpDateChooserDecade(event,2000);" onmouseover="RYMchartPage.onMouseOverDateChooserDecade(event,2000);" class="date_year_chooser_decade_btn">2000s</div><div id="date_year_chooser_year_2000" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2000);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2000);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2000);" data-tiptip="2000">00</div><div id="date_year_chooser_year_2001" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2001);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2001);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2001);" data-tiptip="2001">01</div><div id="date_year_chooser_year_2002" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2002);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2002);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2002);" data-tiptip="2002">02</div><div id="date_year_chooser_year_2003" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2003);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2003);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2003);" data-tiptip="2003">03</div><div id="date_year_chooser_year_2004" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2004);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2004);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2004);" data-tiptip="2004">04</div><div id="date_year_chooser_year_2005" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2005);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2005);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2005);" data-tiptip="2005">05</div><div id="date_year_chooser_year_2006" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2006);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2006);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2006);" data-tiptip="2006">06</div><div id="date_year_chooser_year_2007" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2007);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2007);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2007);" data-tiptip="2007">07</div><div id="date_year_chooser_year_2008" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2008);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2008);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2008);" data-tiptip="2008">08</div><div id="date_year_chooser_year_2009" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,2009);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,2009);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,2009);" data-tiptip="2009">09</div></div><div class="date_year_chooser_row">
+            <div id="date_year_chooser_decade_1990" onmousedown="RYMchartPage.onMouseDownDateChooserDecade(event,1990);" onmouseup="RYMchartPage.onMouseUpDateChooserDecade(event,1990);" onmouseover="RYMchartPage.onMouseOverDateChooserDecade(event,1990);" class="date_year_chooser_decade_btn">1990s</div><div id="date_year_chooser_year_1990" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1990);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1990);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1990);" data-tiptip="1990">90</div><div id="date_year_chooser_year_1991" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1991);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1991);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1991);" data-tiptip="1991">91</div><div id="date_year_chooser_year_1992" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1992);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1992);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1992);" data-tiptip="1992">92</div><div id="date_year_chooser_year_1993" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1993);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1993);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1993);" data-tiptip="1993">93</div><div id="date_year_chooser_year_1994" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1994);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1994);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1994);" data-tiptip="1994">94</div><div id="date_year_chooser_year_1995" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1995);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1995);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1995);" data-tiptip="1995">95</div><div id="date_year_chooser_year_1996" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1996);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1996);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1996);" data-tiptip="1996">96</div><div id="date_year_chooser_year_1997" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1997);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1997);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1997);" data-tiptip="1997">97</div><div id="date_year_chooser_year_1998" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1998);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1998);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1998);" data-tiptip="1998">98</div><div id="date_year_chooser_year_1999" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1999);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1999);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1999);" data-tiptip="1999">99</div></div><div class="date_year_chooser_row">
+            <div id="date_year_chooser_decade_1980" onmousedown="RYMchartPage.onMouseDownDateChooserDecade(event,1980);" onmouseup="RYMchartPage.onMouseUpDateChooserDecade(event,1980);" onmouseover="RYMchartPage.onMouseOverDateChooserDecade(event,1980);" class="date_year_chooser_decade_btn">1980s</div><div id="date_year_chooser_year_1980" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1980);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1980);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1980);" data-tiptip="1980">80</div><div id="date_year_chooser_year_1981" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1981);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1981);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1981);" data-tiptip="1981">81</div><div id="date_year_chooser_year_1982" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1982);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1982);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1982);" data-tiptip="1982">82</div><div id="date_year_chooser_year_1983" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1983);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1983);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1983);" data-tiptip="1983">83</div><div id="date_year_chooser_year_1984" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1984);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1984);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1984);" data-tiptip="1984">84</div><div id="date_year_chooser_year_1985" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1985);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1985);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1985);" data-tiptip="1985">85</div><div id="date_year_chooser_year_1986" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1986);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1986);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1986);" data-tiptip="1986">86</div><div id="date_year_chooser_year_1987" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1987);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1987);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1987);" data-tiptip="1987">87</div><div id="date_year_chooser_year_1988" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1988);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1988);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1988);" data-tiptip="1988">88</div><div id="date_year_chooser_year_1989" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1989);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1989);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1989);" data-tiptip="1989">89</div></div><div class="date_year_chooser_row">
+            <div id="date_year_chooser_decade_1970" onmousedown="RYMchartPage.onMouseDownDateChooserDecade(event,1970);" onmouseup="RYMchartPage.onMouseUpDateChooserDecade(event,1970);" onmouseover="RYMchartPage.onMouseOverDateChooserDecade(event,1970);" class="date_year_chooser_decade_btn">1970s</div><div id="date_year_chooser_year_1970" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1970);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1970);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1970);" data-tiptip="1970">70</div><div id="date_year_chooser_year_1971" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1971);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1971);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1971);" data-tiptip="1971">71</div><div id="date_year_chooser_year_1972" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1972);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1972);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1972);" data-tiptip="1972">72</div><div id="date_year_chooser_year_1973" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1973);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1973);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1973);" data-tiptip="1973">73</div><div id="date_year_chooser_year_1974" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1974);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1974);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1974);" data-tiptip="1974">74</div><div id="date_year_chooser_year_1975" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1975);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1975);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1975);" data-tiptip="1975">75</div><div id="date_year_chooser_year_1976" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1976);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1976);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1976);" data-tiptip="1976">76</div><div id="date_year_chooser_year_1977" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1977);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1977);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1977);" data-tiptip="1977">77</div><div id="date_year_chooser_year_1978" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1978);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1978);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1978);" data-tiptip="1978">78</div><div id="date_year_chooser_year_1979" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1979);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1979);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1979);" data-tiptip="1979">79</div></div><div class="date_year_chooser_row">
+            <div id="date_year_chooser_decade_1960" onmousedown="RYMchartPage.onMouseDownDateChooserDecade(event,1960);" onmouseup="RYMchartPage.onMouseUpDateChooserDecade(event,1960);" onmouseover="RYMchartPage.onMouseOverDateChooserDecade(event,1960);" class="date_year_chooser_decade_btn">1960s</div><div id="date_year_chooser_year_1960" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1960);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1960);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1960);" data-tiptip="1960">60</div><div id="date_year_chooser_year_1961" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1961);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1961);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1961);" data-tiptip="1961">61</div><div id="date_year_chooser_year_1962" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1962);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1962);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1962);" data-tiptip="1962">62</div><div id="date_year_chooser_year_1963" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1963);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1963);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1963);" data-tiptip="1963">63</div><div id="date_year_chooser_year_1964" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1964);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1964);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1964);" data-tiptip="1964">64</div><div id="date_year_chooser_year_1965" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1965);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1965);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1965);" data-tiptip="1965">65</div><div id="date_year_chooser_year_1966" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1966);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1966);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1966);" data-tiptip="1966">66</div><div id="date_year_chooser_year_1967" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1967);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1967);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1967);" data-tiptip="1967">67</div><div id="date_year_chooser_year_1968" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1968);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1968);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1968);" data-tiptip="1968">68</div><div id="date_year_chooser_year_1969" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1969);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1969);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1969);" data-tiptip="1969">69</div></div><div class="date_year_chooser_row">
+            <div id="date_year_chooser_decade_1950" onmousedown="RYMchartPage.onMouseDownDateChooserDecade(event,1950);" onmouseup="RYMchartPage.onMouseUpDateChooserDecade(event,1950);" onmouseover="RYMchartPage.onMouseOverDateChooserDecade(event,1950);" class="date_year_chooser_decade_btn">1950s</div><div id="date_year_chooser_year_1950" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1950);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1950);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1950);" data-tiptip="1950">50</div><div id="date_year_chooser_year_1951" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1951);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1951);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1951);" data-tiptip="1951">51</div><div id="date_year_chooser_year_1952" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1952);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1952);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1952);" data-tiptip="1952">52</div><div id="date_year_chooser_year_1953" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1953);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1953);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1953);" data-tiptip="1953">53</div><div id="date_year_chooser_year_1954" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1954);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1954);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1954);" data-tiptip="1954">54</div><div id="date_year_chooser_year_1955" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1955);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1955);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1955);" data-tiptip="1955">55</div><div id="date_year_chooser_year_1956" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1956);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1956);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1956);" data-tiptip="1956">56</div><div id="date_year_chooser_year_1957" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1957);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1957);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1957);" data-tiptip="1957">57</div><div id="date_year_chooser_year_1958" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1958);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1958);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1958);" data-tiptip="1958">58</div><div id="date_year_chooser_year_1959" class="date_year_chooser_year_btn" onmousedown="RYMchartPage.onMouseDownDateChooserYear(event,1959);" onmouseup="RYMchartPage.onMouseUpDateChooserYear(event,1959);" onmouseover="RYMchartPage.onMouseOverDateChooserYear(event,1959);" data-tiptip="1959">59</div></div></div><div id="chart_date_custom" class="chart_date_custom" style="display: none;">
+
+<div class="ui_element ui_date"> <div class="ui_date_input" id="chart_custom_date_range_frame"> <div class="ui_date_icon" id="chart_custom_date_range_icon"> <i class="icon-calendar"></i> </div> <input id="chart_custom_date_range_text" name="chart_custom_date_range_text" class="ui_date_text" data-mainid="chart_custom_date_range" onfocus="return uiObj(this).onFocus(event); " onblur="return uiObj(this).onBlur(event); " onchange="return uiObj(this).onChange(event); " onkeyup="return uiObj(this).onKeyUp(event); " placeholder="Date or date range" value=""> </div> <input type="hidden" data-custom-action="console.log(1);" name="chart_custom_date_range" id="chart_custom_date_range" value="" data-data_format="range"><script> document.getElementById('chart_custom_date_range').dataset['data_format'] = 'range';</script> <div id="chart_custom_date_range_error" class="ui_errorlabel" style="display:none;"></div> <div id="chart_custom_date_range_success" class="ui_successlabel" style="display:none;"></div> <div id="chart_custom_date_range_info" class="ui_infolabel" style="display:none;"></div>
+</div>
+<script> rymInitPush( function() {
+var obj = new RYMdate('chart_custom_date_range', '');
+RYMUI.addElement('date', obj);
+$('#chart_custom_date_range').data('obj', obj);
+obj.init();
+});
+</script> 
+
+</div><input type="hidden" id="start_date" name="start_date" value="18000000"><input type="hidden" id="end_date" name="end_date" value="20239999"><input type="hidden" name="platform_include_all" id="platform_include_all" value="false">
+
+<div class="chart_section chart_releases">
+Platforms
+</div>
+
+<div class="chart_genre_selector">
+<div id="ui_picker_frame_platform_include" class="ui_picker_frame"> <input type="hidden" id="platform_include" name="platform_include" class="ui_picker" data-initialized="false" data-picker-type="platform" data-onchange="" data-object="" data-assoc-id="" data-sec-id="" data-status="not_loaded" data-callback="" data-save-action="none" data-selection-mode="multiple" data-show-all-results="false" data-value-mode="ids" data-allow-freeform="false" data-bracketed-aka="false" data-filter-by-id="false" value="[]"> <div id="ui_picker_items_platform_include" class="ui_picker_items"> </div> <div id="ui_picker_input_frame_platform_include" class="ui_picker_input_frame"> <input id="ui_picker_input_platform_include" class="ui_picker_input" autocomplete="off"> <div id="ui_picker_input_clear_platform_include" class="ui_picker_input_clear" onclick="RYMpicker.clear($('#platform_include'));"><i class="fa fa-times-circle"></i></div> </div> <div style="position:relative;width:100%"> <div class="ui_picker_list" id="ui_picker_list_platform_include"> </div> </div>
+</div>
+</div><input type="hidden" id="platform_include_incl_children" value="true">            
+
+
+<div style="clear:both;"></div>
+
+<div id="errors_platform_include" class="chart_error"></div>
+   <div class="any_all_chooser" id="any_all_genre_include_all">
+      <div id="any_all_genre_include_all_any" onclick="RYMchartPage.selectAnyAll('genre_include_all', 'any');" class="any_all_choice selected">any</div> 
+         | 
+       <div id="any_all_genre_include_all_all" onclick="RYMchartPage.selectAnyAll('genre_include_all', 'all');" class="any_all_choice ">all</div>
+   </div>
+<input type="hidden" name="genre_include_all" id="genre_include_all" value="false">
+
+<div class="chart_section chart_releases">
+Included Genres
+</div>
+
+<div class="chart_genre_selector">
+<div id="ui_picker_frame_genre_include" class="ui_picker_frame"> <input type="hidden" id="genre_include" name="genre_include" class="ui_picker" data-initialized="false" data-picker-type="genre_games" data-onchange="" data-object="" data-assoc-id="" data-sec-id="" data-status="not_loaded" data-callback="" data-save-action="none" data-selection-mode="multiple" data-show-all-results="false" data-value-mode="ids" data-allow-freeform="false" data-bracketed-aka="false" data-filter-by-id="false" value="[]"> <div id="ui_picker_items_genre_include" class="ui_picker_items"> </div> <div id="ui_picker_input_frame_genre_include" class="ui_picker_input_frame"> <input id="ui_picker_input_genre_include" class="ui_picker_input" autocomplete="off"> <div id="ui_picker_input_clear_genre_include" class="ui_picker_input_clear" onclick="RYMpicker.clear($('#genre_include'));"><i class="fa fa-times-circle"></i></div> </div> <div style="position:relative;width:100%"> <div class="ui_picker_list" id="ui_picker_list_genre_include"> </div> </div>
+</div>
+</div>     
+
+<label class="chart_incl_children" for="genre_include_incl_children"><input type="checkbox" id="genre_include_incl_children" checked=""> Include sub-genres</label>
+         
+
+
+<div style="clear:both;"></div>
+
+<div id="errors_genre_include" class="chart_error"></div><input type="hidden" name="genre_exclude_all" id="genre_exclude_all" value="false">
+
+<div class="chart_section chart_releases">
+Excluded Genres
+</div>
+
+<div class="chart_genre_selector">
+<div id="ui_picker_frame_genre_exclude" class="ui_picker_frame"> <input type="hidden" id="genre_exclude" name="genre_exclude" class="ui_picker" data-initialized="false" data-picker-type="genre_games" data-onchange="" data-object="" data-assoc-id="" data-sec-id="" data-status="not_loaded" data-callback="" data-save-action="none" data-selection-mode="multiple" data-show-all-results="false" data-value-mode="ids" data-allow-freeform="false" data-bracketed-aka="false" data-filter-by-id="false" value="[]"> <div id="ui_picker_items_genre_exclude" class="ui_picker_items"> </div> <div id="ui_picker_input_frame_genre_exclude" class="ui_picker_input_frame"> <input id="ui_picker_input_genre_exclude" class="ui_picker_input" autocomplete="off"> <div id="ui_picker_input_clear_genre_exclude" class="ui_picker_input_clear" onclick="RYMpicker.clear($('#genre_exclude'));"><i class="fa fa-times-circle"></i></div> </div> <div style="position:relative;width:100%"> <div class="ui_picker_list" id="ui_picker_list_genre_exclude"> </div> </div>
+</div>
+</div>     
+
+<label class="chart_incl_children" for="genre_exclude_incl_children"><input type="checkbox" id="genre_exclude_incl_children" checked=""> Exclude sub-genres</label>
+         
+
+
+<div style="clear:both;"></div>
+
+<div id="errors_genre_exclude" class="chart_error"></div>
+   <div class="any_all_chooser" id="any_all_sec_genre_include_all">
+      <div id="any_all_sec_genre_include_all_any" onclick="RYMchartPage.selectAnyAll('sec_genre_include_all', 'any');" class="any_all_choice selected">any</div> 
+         | 
+       <div id="any_all_sec_genre_include_all_all" onclick="RYMchartPage.selectAnyAll('sec_genre_include_all', 'all');" class="any_all_choice ">all</div>
+   </div>
+<input type="hidden" name="sec_genre_include_all" id="sec_genre_include_all" value="false">
+
+<div class="chart_section chart_releases">
+Influences (secondary genres)
+</div>
+
+<div class="chart_genre_selector">
+<div id="ui_picker_frame_sec_genre_include" class="ui_picker_frame"> <input type="hidden" id="sec_genre_include" name="sec_genre_include" class="ui_picker" data-initialized="false" data-picker-type="genre_games" data-onchange="" data-object="" data-assoc-id="" data-sec-id="" data-status="not_loaded" data-callback="" data-save-action="none" data-selection-mode="multiple" data-show-all-results="false" data-value-mode="ids" data-allow-freeform="false" data-bracketed-aka="false" data-filter-by-id="false" value="[]"> <div id="ui_picker_items_sec_genre_include" class="ui_picker_items"> </div> <div id="ui_picker_input_frame_sec_genre_include" class="ui_picker_input_frame"> <input id="ui_picker_input_sec_genre_include" class="ui_picker_input" autocomplete="off"> <div id="ui_picker_input_clear_sec_genre_include" class="ui_picker_input_clear" onclick="RYMpicker.clear($('#sec_genre_include'));"><i class="fa fa-times-circle"></i></div> </div> <div style="position:relative;width:100%"> <div class="ui_picker_list" id="ui_picker_list_sec_genre_include"> </div> </div>
+</div>
+</div>     
+
+<label class="chart_incl_children" for="sec_genre_include_incl_children"><input type="checkbox" id="sec_genre_include_incl_children" checked=""> Include sub-genres</label>
+         
+
+
+<div style="clear:both;"></div>
+
+<div id="errors_sec_genre_include" class="chart_error"></div><input type="hidden" name="sec_genre_exclude_all" id="sec_genre_exclude_all" value="false">
+
+<div class="chart_section chart_releases">
+Excluded influences
+</div>
+
+<div class="chart_genre_selector">
+<div id="ui_picker_frame_sec_genre_exclude" class="ui_picker_frame"> <input type="hidden" id="sec_genre_exclude" name="sec_genre_exclude" class="ui_picker" data-initialized="false" data-picker-type="genre_games" data-onchange="" data-object="" data-assoc-id="" data-sec-id="" data-status="not_loaded" data-callback="" data-save-action="none" data-selection-mode="multiple" data-show-all-results="false" data-value-mode="ids" data-allow-freeform="false" data-bracketed-aka="false" data-filter-by-id="false" value="[]"> <div id="ui_picker_items_sec_genre_exclude" class="ui_picker_items"> </div> <div id="ui_picker_input_frame_sec_genre_exclude" class="ui_picker_input_frame"> <input id="ui_picker_input_sec_genre_exclude" class="ui_picker_input" autocomplete="off"> <div id="ui_picker_input_clear_sec_genre_exclude" class="ui_picker_input_clear" onclick="RYMpicker.clear($('#sec_genre_exclude'));"><i class="fa fa-times-circle"></i></div> </div> <div style="position:relative;width:100%"> <div class="ui_picker_list" id="ui_picker_list_sec_genre_exclude"> </div> </div>
+</div>
+</div>     
+
+<label class="chart_incl_children" for="sec_genre_exclude_incl_children"><input type="checkbox" id="sec_genre_exclude_incl_children" checked=""> Exclude sub-genres</label>
+         
+
+
+<div style="clear:both;"></div>
+
+<div id="errors_sec_genre_exclude" class="chart_error"></div><input type="hidden" name="descriptor_include_all" id="descriptor_include_all" value="false"><input type="hidden" id="descriptor_include" value=""><input type="hidden" id="descriptor_include_incl_children" value="true">            
+
+
+<div style="clear:both;"></div>
+
+<div id="errors_descriptor_include" class="chart_error"></div><input type="hidden" name="descriptor_exclude_all" id="descriptor_exclude_all" value="false"><input type="hidden" id="descriptor_exclude" value=""><input type="hidden" id="descriptor_exclude_incl_children" value="true">            
+
+
+<div style="clear:both;"></div>
+
+<div id="errors_descriptor_exclude" class="chart_error"></div><input type="hidden" name="attribute_include_all" id="attribute_include_all" value="false"><input type="hidden" id="attribute_include" value=""><input type="hidden" id="attribute_include_incl_children" value="true">            
+
+
+<div style="clear:both;"></div>
+
+<div id="errors_attribute_include" class="chart_error"></div><input type="hidden" name="attribute_exclude_all" id="attribute_exclude_all" value="false"><input type="hidden" id="attribute_exclude" value=""><input type="hidden" id="attribute_exclude_incl_children" value="true">            
+
+
+<div style="clear:both;"></div>
+
+<div id="errors_attribute_exclude" class="chart_error"></div><input type="hidden" name="language_include_all" id="language_include_all" value="false"><input type="hidden" id="language_include" value=""><input type="hidden" id="language_include_incl_children" value="true">            
+
+
+<div style="clear:both;"></div>
+
+<div id="errors_language_include" class="chart_error"></div><input type="hidden" name="user_group" id="user_group" value="all">
+<div class="chart_section user_group">
+As rated by...
+</div>
+
+<div class="user_group_chooser ">
+<div onclick="RYMchartPage.selectChartUserGroup('all');" id="user_group_btn_all" class="user_group_btn selected">All users</div><div onclick="RYMchartPage.selectChartUserGroup('location');" id="user_group_btn_location" class="user_group_btn  ">Located in...</div><div onclick="RYMchartPage.selectChartUserGroup('custom');" id="user_group_btn_custom" class="user_group_btn  ">Custom</div></div>
+
+
+<div id="user_group_frame" class="user_group group_all"> <div class="user_group_location"> 
+<div id="ui_multiobject_frame_user_locations" class="ui_multiobject_frame "> <input type="hidden" id="user_locations" name="user_locations" class="ui_multiobject" value="[]"> <div id="ui_multiobject_objects_user_locations" class="ui_multiobject_objects"> </div> 
+
+<div class="ui_chooser_frame" id="ui_chooser_frame_user_locations_chooser_obj"> <div class="ui_chooser" id="ui_chooser_user_locations_chooser_obj" data-id="user_locations_chooser_obj" data-parent-id="user_locations" data-allowed-types="location" data-select-first-result="" data-select-action="custom" data-placeholder="" data-custom-action="RYMmultiObject.onSelectObject(el, result);"> <i class="fa fa-search"></i> <div class="ui_chooser_input_frame"> <input id="ui_chooser_input_user_locations_chooser_obj" data-id="user_locations_chooser_obj" placeholder="search location..."> </div> <div class="ui_chooser_type" id="ui_chooser_type_user_locations_chooser_obj" style="display: none;"> <span class="ui_chooser_type_text" id="ui_chooser_type_text_user_locations_chooser_obj"></span> <i class="fa fa-caret-down"></i> <select onfocus="" data-id="user_locations_chooser_obj" id="ui_chooser_select_user_locations_chooser_obj"> <optgroup label="location"><option value="location">Location</option></optgroup></select> </div> </div>
+</div> 
+</div>
+</div> <div class="user_group_custom"> <label class="user_group_label" for="user_group_other"> 
+         <span class="subtext">Enter up to 20 usernames.  You can also enter 
+            <ul>
+               <li><b>followers</b> to include your followers</li>
+               <li><b>following</b> to include people you follow</li>
+               <li><b>compatible</b> to include your compatible user list</li>
+               <li>up to 3 list shortcuts (e.g. [List12345]) to include up to 100 people that appear in that list.</li>
+            </ul>
+         </span>
+         <textarea class="user_group_other" id="user_group_other"></textarea>
+      </label></div>
+</div><div id="errors_user" class="chart_error"></div><input type="hidden" name="artist_group" id="artist_group" value="all">
+<div class="chart_section artist_group">Filter by credited people: </div>
+
+<div class="artist_group_chooser">
+<div onclick="RYMchartPage.selectChartArtistGroup('all');" id="artist_group_btn_all" class="artist_group_btn  selected">All</div><div onclick="RYMchartPage.selectChartArtistGroup('location');" id="artist_group_btn_location" class="artist_group_btn ">Located in...</div><div onclick="RYMchartPage.selectChartArtistGroup('custom');" id="artist_group_btn_custom" class="artist_group_btn ">Specific artists</div></div>
+<div id="artist_group_frame" class="artist_group group_all"> <div class="artist_group_location"> 
+<div id="ui_multiobject_frame_artist_locations" class="ui_multiobject_frame "> <input type="hidden" id="artist_locations" name="artist_locations" class="ui_multiobject" value="[]"> <div id="ui_multiobject_objects_artist_locations" class="ui_multiobject_objects"> </div> 
+
+<div class="ui_chooser_frame" id="ui_chooser_frame_artist_locations_chooser_obj"> <div class="ui_chooser" id="ui_chooser_artist_locations_chooser_obj" data-id="artist_locations_chooser_obj" data-parent-id="artist_locations" data-allowed-types="location" data-select-first-result="" data-select-action="custom" data-placeholder="" data-custom-action="RYMmultiObject.onSelectObject(el, result);"> <i class="fa fa-search"></i> <div class="ui_chooser_input_frame"> <input id="ui_chooser_input_artist_locations_chooser_obj" data-id="artist_locations_chooser_obj" placeholder="search location..."> </div> <div class="ui_chooser_type" id="ui_chooser_type_artist_locations_chooser_obj" style="display: none;"> <span class="ui_chooser_type_text" id="ui_chooser_type_text_artist_locations_chooser_obj"></span> <i class="fa fa-caret-down"></i> <select onfocus="" data-id="artist_locations_chooser_obj" id="ui_chooser_select_artist_locations_chooser_obj"> <optgroup label="location"><option value="location">Location</option></optgroup></select> </div> </div>
+</div> 
+</div>
+</div> <div class="artist_group_custom"> 
+<div class="any_all_chooser" id="any_all_artist_include_all">
+   <div id="any_all_artist_include_all_any" onclick="RYMchartPage.selectAnyAll('artist_include_all', 'any');" class="any_all_choice selected">any</div> 
+      | 
+    <div id="any_all_artist_include_all_all" onclick="RYMchartPage.selectAnyAll('artist_include_all', 'all');" class="any_all_choice ">all</div>
+</div>
+<div class="clearfix"></div>
+<input type="hidden" name="artist_include_all" id="artist_include_all" value="false">
+<div id="ui_multiobject_frame_artist_include" class="ui_multiobject_frame "> <input type="hidden" id="artist_include" name="artist_include" class="ui_multiobject" value="[]"> <div id="ui_multiobject_objects_artist_include" class="ui_multiobject_objects"> </div> 
+
+<div class="ui_chooser_frame" id="ui_chooser_frame_artist_include_chooser_obj"> <div class="ui_chooser" id="ui_chooser_artist_include_chooser_obj" data-id="artist_include_chooser_obj" data-parent-id="artist_include" data-allowed-types="artist" data-select-first-result="" data-select-action="custom" data-placeholder="" data-custom-action="RYMmultiObject.onSelectObject(el, result);"> <i class="fa fa-search"></i> <div class="ui_chooser_input_frame"> <input id="ui_chooser_input_artist_include_chooser_obj" data-id="artist_include_chooser_obj" placeholder="search artists..."> </div> <div class="ui_chooser_type" id="ui_chooser_type_artist_include_chooser_obj" style="display: none;"> <span class="ui_chooser_type_text" id="ui_chooser_type_text_artist_include_chooser_obj"></span> <i class="fa fa-caret-down"></i> <select onfocus="" data-id="artist_include_chooser_obj" id="ui_chooser_select_artist_include_chooser_obj"> <optgroup label="Music"><option value="artist">Artist</option></optgroup></select> </div> </div>
+</div> 
+</div>
+<input type="checkbox" id="artist_include_minor"> Include cast and crew</div>
+</div>
+
+<div id="chart_section_catalog">
+
+<div class="chart_section chart_releases">
+   Exclude releases that I have...
+</div> 
+
+<div class="chart_catalog_selector">
+
+   <span id="chart_catalog_catalog" onclick="RYMchartPage.toggleExcludeType('catalog');" class="chart_catalog_option cl-999 bg-f8f8f8 ">
+      <i class="fa fa-check"></i> Cataloged
+   </span><span id="chart_catalog_ratings" onclick="RYMchartPage.toggleExcludeType('ratings');" class="chart_catalog_option cl-999 bg-f8f8f8 ">
+     <i class="fa fa-check"></i> Rated
+   </span><span id="chart_catalog_wishlist" onclick="RYMchartPage.toggleExcludeType('wishlist');" class="chart_catalog_option cl-999 bg-f8f8f8 ">
+     <i class="fa fa-check"></i> Wishlisted
+   </span>
+
+</div> 
+</div>
+<input type="hidden" id="cat_exclude" name="cat_exclude" value="">
+
+<div id="chart_pop_weight_section">
+   <div class="chart_section chart_releases">
+      Popularity weighting
+   </div> 
+
+   <div class="chart_pop_selector bg-f8f8f8" id="chart_pop_selector" style="">
+      <div class="chart_pop_label chart_pop_label_right">Highest</div>
+      <div class="chart_pop_label chart_pop_label_left">Lowest</div>
+
+      <div class="chart_pop_label_choices">
+        <div id="chart_pop_1" onclick="RYMchartPage.selectPopularityWeight('1');" class="chart_pop_label_choice ">
+           <i class="fa fa-circle"></i> 
+        </div>
+        <div id="chart_pop_2" onclick="RYMchartPage.selectPopularityWeight('2');" class="chart_pop_label_choice ">
+           <i class="fa fa-circle"></i> 
+        </div>
+        <div id="chart_pop_3" onclick="RYMchartPage.selectPopularityWeight('3');" class="chart_pop_label_choice selected">
+           <i class="fa fa-circle"></i> 
+        </div>
+        <div id="chart_pop_4" onclick="RYMchartPage.selectPopularityWeight('4');" class="chart_pop_label_choice ">
+           <i class="fa fa-circle"></i> 
+        </div>
+        <div id="chart_pop_5" onclick="RYMchartPage.selectPopularityWeight('5');" class="chart_pop_label_choice ">
+           <i class="fa fa-circle"></i> 
+        </div>
+
+      </div>  
+
+   </div>
+    
+</div>
+
+<input type="hidden" id="pop_weight" name="pop_weight" value="3">
+
+<div id="chart_min_ratings_section">
+
+
+   <div class="chart_section">
+      Minimum # of ratings
+   </div> 
+
+   <div class="chart_min_ratings">
+      <input id="min_ratings" value="" placeholder="no minimum">
+   </div>
+
+</div>
+<div id="errors_min_ratings" class="chart_error"></div>
+
+<div onclick="RYMchartPage.submit();" class="btn blue_btn chart_create_btn">
+Create chart
+</div>
+
+<div id="errors_general" class="chart_error">There are errors in your filters - please correct them and try again.</div>
+
+
+
+
+</div> <div class="clearfix"></div> </div>
+</div>
+<div class="clearfix"></div>
+<!-- end content and content_wrapper -->
+</div>
+</div>
+
+<div id="track_preview_frame" class="track_preview_frame">
+
+<div class="track_preview_close" onclick="$('#track_preview_frame').hide();$('#track_preview').html('');">
+<i class="fa fa-times-circle"></i>
+</div>
+
+<div id="track_preview_text" class="track_preview_text">
+</div>
+
+<div id="track_preview" class="track_preview">
+
+</div>
+</div>
+
+<div class="overlay_invisible" id="overlay_invisible"></div>
+
+<div class="ui_cropper_frame" id="ui_cropper_frame"></div>
+
+<div class="modal_parent_frame" id="modal_parent_frame">
+<div onclick="RYMcollectiveVoting.close();" id="modal_overlay" class="modal_overlay" style="">Close <i class="fa fa-times"></i></div>
+<div onclick="RYMcollectiveVoting.close();" id="modal_overlay_invisible" class="modal_overlay_invisible" style=""></div>
+<div id="modal_parent_frame_inner" class="modal_parent_frame_inner">
+    <div id="modal_content" class="modal_content">
+    </div>
+</div>
+</div>
+
+<!-- ~~~~~~~~ end content ~~~~~~~~~~~~~~~ -->
+<div class="ui_chooser_results_frame" id="ui_chooser_results_frame">
+<div class="ui_chooser_results bg-fff alternate" id="ui_chooser_results" style="display: none;">
+</div>
+</div>  
+
+<div id="content_cover">
+<div id="preview_frame"></div>
+</div>
+
+
+
+<div id="loading_anim" style="display:none;">
+<div class="loading_anim">
+   <i class="fa fa-cog fa-spin"></i> Loading...
+</div>
+</div>
+
+
+<div id="voting_ui_frame"></div>
+
+
+
+
+<div style="clear:both;"></div>
+<footer>
+<div class="footer_inner">
+
+<div class="footer_main_section"><div class="minilogo_frame"><div class="minilogo"> 
+               <div class="logo_glitchwave_bw_24"></div>
+               <span class="minilogo_text">Glitchwave</span>
+            </div></div>
+
+
+<div class="copyright">© 2000-2023 Sonemic, Inc.<br>All rights reserved.</div><div class="copyright">Rate Your Video Games</div>
+
+
+
+<div class="clearfix"></div>
+<!-- <div class="trademark">Sonemic is a registered trademark of Sonemic, Inc. </div> -->
+
+<div class="clearfix"></div>
+
+<div class="social_icons"> 
+   <a href="https://facebook.com/sonemic.network/" target="_blank"><i class="fa fa-facebook-square"></i></a> 
+   <a href="https://twitter.com/sonemic/" target="_blank"><i class="fa fa-twitter-square"></i></a> 
+
+
+<a href="https://steamcommunity.com/groups/glitchwave" target="_blank"><i class="fa fa-steam"></i></a>
+
+</div>
+</div> 
+
+<div id="expand_full_footer" class="mobile_expandable_full mobile_expand_footer">
+
+<div id="expand_full_header_footer" class="mobile_expandable_full_header" onclick="RYMmobile.mobileExpand.toggleFull('footer');">
+
+   <div class="mobile_expandable_full_icons">
+      <div class="mobile_expandable_full_expand_icon_expanded">
+         <i class="fa fa-caret-down"></i>
+      </div>
+      <div class="mobile_expandable_full_expand_icon_hidden">
+         <i class="fa fa-caret-right"></i>
+      </div>
+   </div>
+
+   <div id="expand_full_name_footer" class="mobile_expandable_full_name">
+      Site links
+   </div>
+
+</div>
+
+<div id="expand_full_content_footer" class="mobile_expandable_full_content">
+   
+<div class="footer_sections">
+<div class="footer_section" id="section_network">
+   <div class="footer_header">RYM network</div>
+   <div class="footer_sub_links">
+      <a class="asonemic" href="https://rateyourmusic.com/">RYM <span class="sub">music</span></a>
+      <a class="asonemic" href="https://sonemic.com/">Sonemic <span class="sub">music (beta)</span></a>
+      <a class="acinemos" href="https://cinemos.com/">Cinemos <span class="sub">film (beta)</span></a>
+      <a class="aglitchwave" href="https://glitchwave.com/">Glitchwave <span class="sub">games (beta)</span></a>
+   </div>
+</div>
+<div class="footer_section">
+   <div class="footer_header">Info</div>
+   <div class="footer_sub_links">
+      <a href="https://rateyourmusic.com/wiki/Games" target="_blank" rel="noopener">Site standards</a>
+      <a href="/submissions/">Submissions</a>
+   </div>
+</div>
+<div class="footer_section">
+   <div class="footer_header">Policy</div>
+   <div class="footer_sub_links">
+      <!-- <a class="" href="/docs/community_rules/">Community rules</a> -->
+      <!-- <a class="" href="/docs/general_rules/">General rules</a> -->
+      <!--<div class="updated">Updated 22 May 2017</div> -->
+      <a class="" href="https://rateyourmusic.com/privacy">Privacy</a>
+      <a class="" href="/terms-of-service/">Terms of service</a>
+   </div>
+</div>
+<div class="footer_section">
+   <div class="footer_header">Contact us</div>
+   <div class="footer_sub_links">
+      <a href="https://rateyourmusic.com/contact" target="_blank" rel="noopener">Get support</a>
+      <a href="https://rateyourmusic.com/contact" target="_blank" rel="noopener">Send feedback</a>
+      <!-- <a href="/support/?partnerships">Advertise</a> -->
+      <!-- <a href="/jobs/">Jobs</a> -->
+   </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="g-recaptcha" data-sitekey="6LdaLxkUAAAAAJYzVmL0OQJiqH9Hev7JQ4AxcvhG" data-callback="_captchaCallback" data-size="invisible">
+</div>
+
+
+<div class="server_info">Instance: 87 Ads: disabled</div>
+
+<div style="clear:both;"></div>
+</div>
+
+</footer>
+
+
+<div id="ui_date_help">
+<div class="ui_date_help_text" style="font-size:0.9em;line-height:1.4">
+<b>Examples</b>
+<br>
+1980s-1996
+<br>
+23 mar 2015
+<br>
+8 apr - 12 may 2015
+<br>
+1998-05
+</div>
+</div>
+<div id="image_browser" class="image_browser" onclick="RYMimageBrowser.hide();"> 
+
+
+<div class="image_browser_loading_frame">
+<div class="image_browser_loading" id="image_browser_loading">
+   <div id="block_1" class="load_block"></div>
+   <div id="block_2" class="load_block"></div>
+   <div id="block_3" class="load_block"></div>
+</div> 
+<div class="helper"></div>
+</div>
+
+<div class="image_browser_image" id="image_browser_image">
+
+<img id="image_browser_image_img"> <div class="helper"></div>
+</div>
+
+<div class="image_browser_navigation">
+<div class="image_browser_prev" onclick="RYMimageBrowser.prev(); event.stopPropagation();"><div class="helper"></div><i class="fa fa-angle-left"></i></div>
+<div class="image_browser_next" onclick="RYMimageBrowser.next(); event.stopPropagation();"><div class="helper"></div><i class="fa fa-angle-right"></i></div>
+</div>
+
+<div id="image_browser_preload" class="image_browser_preload"></div>
+<div class="image_browser_controls" onclick="event.stopPropagation();">   
+
+<div class="image_browser_btn" id="image_browser_report_btn" onclick="RYMimageBrowser.toggleReport();">  
+   <i class="fa fa-warning"></i> Report
+</div>
+<a class="image_browser_btn" id="image_browser_download_btn">  
+   <i class="fa fa-download"></i> Download
+</a>
+
+<div class="image_browser_progress" id="image_browser_progress">Image 1 of 2</div>
+
+</div>
+<div class="image_browser_date_caption_bar" onclick="event.stopPropagation();">
+
+<div class="image_browser_date" id="image_browser_date" onclick="event.stopPropagation();"></div>
+
+<div class="image_browser_caption" id="image_browser_caption" onclick="event.stopPropagation();"></div>  
+
+</div>
+
+</div>
+<script>
+rymInitPush(function()  {
+if ( location.search === "?email_verified") {  
+rym.showGlobalMessage('Thanks! Your email has been verified.')
+} else if ( location.search === "?email_not_verified") {
+rym.showGlobalError('Sorry, there was a problem validating your email address.  Please go to site settings and request a new confirmation mail.');
+}
+});
+</script>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/min.js?rand=1718615" async=""></script>
+
+
+<script>$( document ).ready(function() { rymInitPush(function() { rym.setupPage() }) } ) </script>
+
+<script type="text/javascript" src="/web_ads/advertisement.js"></script>
+
+<script> function areAdsBlocked() { return ($('#ad_1').length == 0) } 
+function politeAdRequest() {
+var xx = '<div class=abpmessage>Glitchwave relies on advertising income to support the site.  Please consider adding an exception to adblock for glitchwave.com, or <a href=/subscribe>subscribing</a> to help with bandwidth/server costs.</div>' 
+$('#content').prepend(xx)
+}
+rymInitPush(function() { 
+
+rym.isi = 87;
+rym.site = 'glitchwave';
+
+
+})
+</script>
+<div id="tiptip_holder" style="pointer-events:none;max-width:1200px;"><div id="tiptip_arrow"><div id="tiptip_arrow_inner"></div></div><div id="tiptip_content"></div></div></body>
