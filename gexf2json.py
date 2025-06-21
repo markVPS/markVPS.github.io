@@ -117,7 +117,7 @@ for edge in tree.xpath('//g:edge', namespaces=nsmap):
     else:
         sourcecolor = nodes_rgb[sourceindex]
         targetcolor = nodes_rgb[targetindex]
-        color = sourcecolor if edge_is_directed else tuple((sourcecolor[k] + targetcolor[k])/2 for k in range(3))
+        color = sourcecolor if edge_is_directed else tuple((sourcecolor[k] + targetcolor[k])/2 for k in range(30))
     edges.append({
         's': sourceindex,
         't': targetindex,

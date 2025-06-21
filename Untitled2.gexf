@@ -3769,7 +3769,7 @@
       </node>
     </nodes>
     <edges>
-      <edge id="7962" source="1999 Mundane Office Space" target="Corporate"/>
+      <edge id="7962" source="1999 Mundane Office Space" target="Corporate" weight="5"/>
       <edge id="7963" source="1999 Mundane Office Space" target="Yuppie"/>
       <edge id="7964" source="1999 Mundane Office Space" target="International Typographic Style"/>
       <edge id="7965" source="1999 Mundane Office Space" target="Office Siren"/>
