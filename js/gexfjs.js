@@ -17,7 +17,7 @@
 (function() {
 
     var GexfJS = {
-        lensRadius: 200,
+        lensRadius: 2000,
         lensGamma: 0.5,
         graphZone: {
             width: 0,
@@ -88,11 +88,10 @@
             },
             "en": {
                 "search": "Search nodes",
-                "nodeAttr": "Attributes",
                 "nodes": "Nodes",
                 "inLinks": "Inbound Links from:",
                 "outLinks": "Outbound Links to:",
-                "undirLinks": "Undirected links with:",
+                "undirLinks": "Connections with:",
                 "lensOn": "Activate lens mode",
                 "lensOff": "Deactivate lens mode",
                 "edgeOn": "Show edges",
@@ -292,14 +291,8 @@
                 .append($('<div>').addClass('largepill').css('background', _d.B))
                 .append($('<span>').text(_d.l))
                 .appendTo(_html);
-            $('<h4>').text(strLang("nodeAttr")).appendTo(_html);
+            $
             _ul.appendTo(_html);
-            if (GexfJS.params.showId) {
-                var _li = $("<li>");
-                $("<b>").text("id: ").appendTo(_li);
-                $("<span>").text(_d.id).appendTo(_li);
-                _li.appendTo(_ul);
-            }
             for (var i = 0, l = _d.a.length; i < l; i++) {
                 var attr = _d.a[i];
                 var _li = $("<li>");
