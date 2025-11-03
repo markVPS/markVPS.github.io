@@ -3,16 +3,18 @@
 
 #### 11/2
 Katie and Mark officially collaborators on the Github Repository
-We can create and share files
-#### https://aesthetics.fandom.com/wiki/Category:Aesthetics_by_Type
 
-#### https://gephi.org/
+#### Aesthetics Wiki we will pull data from via web scraping
+https://aesthetics.fandom.com/wiki/Category:Aesthetics_by_Type
 
-#### https://web.archive.org/web/20250707134933/https://aesthetics-wiki-network.glitch.me
+#### Hannah's example for the Aesthetics
+https://web.archive.org/web/20250707134933/https://aesthetics-wiki-network.glitch.me
 
-#### https://www.marvel-graphs.net/#/characters/?character=Kingpin
+#### For creating the network graph
+https://www.sigmajs.org
 
-#### https://github.com/boogheta/Marvel#readme
+#### Our vision
+https://www.marvel-graphs.net/
 
-#### https://www.sigmajs.org
-
+#### It's GitHub page
+https://github.com/boogheta/Marvel#readme
