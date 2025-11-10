@@ -1,0 +1,1434 @@
+/* -------- General style ------------*/
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "DejaVu Sans Mono", "DejaVuSansMono", monospace;
+  background-color: black;
+}
+
+.shifted {
+  margin-right: 5px;
+}
+
+/* App colors & Fonts */
+
+:root {
+  --marvel-red: #ec1d24;
+  --marvel-red-light: #ff4f56;
+  --marvel-red-dark: #ba0000;
+}
+.red {
+  color: var(--marvel-red);
+}
+.lightred {
+  color: var(--marvel-red-light);
+}
+
+@font-face {
+  font-family: "ImpactLoad";
+  src: url(./fonts/impact.ttf) format("truetype");
+}
+@font-face {
+  font-family: "DejaVuSansMono";
+  src: url(./fonts/LiberationMono-Regular.ttf) format("truetype");
+}
+
+/* Discrete selected texts */
+
+::selection {
+  background-color: #000;
+}
+::-moz-selection {
+  background-color: #000;
+}
+
+input[type="search"]::selection {
+  background-color: #000;
+}
+input[type="search"]::-moz-selection {
+  background-color: #000;
+}
+
+/* Buttons */
+
+button {
+  padding: 0;
+  margin: 2px;
+  width: 38px;
+  height: 38px;
+  background-color: #333;
+  font-size: 15px;
+  font-weight: bold;
+  text-indent: 0px;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid #444;
+}
+
+button.selected {
+  background-color: var(--marvel-red);
+  border-color: #555;
+}
+
+button.close-button {
+  position: fixed;
+  top: 0;
+  right: 2px;
+  margin: 2px!important;
+}
+
+button img {
+  width: 24px;
+  height: 24px;
+  margin-top: 3px;
+}
+
+
+/* Hover tooltips on actions */
+
+#tooltip {
+  display: none;
+  position: fixed;
+  background-color: #555;
+  border: 1px solid #777;
+  border-radius: 3px;
+  padding: 4px 6px;
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  z-index: 25;
+  min-width: 80px;
+  max-width: 200px;
+  text-align: center;
+}
+#tooltip span {
+  display: inline-block;
+}
+
+/* Missing JS/WebGL disclaimers */
+
+#webgl-disclaimer, #noscript {
+  z-index: 10;
+  opacity: 0.8;
+}
+#webgl-disclaimer {
+  display: none;
+}
+#webgl-disclaimer p, #noscript p {
+  position: relative;
+  width: 66%;
+  top: 35%;
+  left: 17%;
+  text-align: center;
+  font-size: 22px;
+  color: #999;
+}
+
+
+/* -------- Main sidebar ------------*/
+
+#sidebar {
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  margin-right: 2px;
+  overflow: hidden;
+  font-size: 14px;
+  background-color: #222;
+  color: #AAA;
+  float: left;
+  text-align: center;
+  box-shadow: 2px 0 5px #000;
+  z-index: 1;
+  position: absolute;
+}
+#sidebar a, #sidebar a:visited, #comics-bar a, #comics-bar a:visited {
+  color: #af4f4f;
+}
+
+/* Logo & Title */
+
+#header {
+  padding-bottom: 10px;
+}
+
+.reset-graph {
+  cursor: pointer;
+}
+
+.logo {
+  float: left;
+  padding: 3px 0 0 4px;
+  height: 47px;
+}
+
+h1 {
+  font-size: 32px;
+  background-color: var(--marvel-red);
+  color: white;
+  padding: 5px 0;
+  margin: 0 0 9px 0;
+}
+.marvel {
+  font-family: "Impact", "ImpactLoad", monospace;
+  font-weight: normal;
+  font-size: 36px;
+  letter-spacing: -1px;
+  transform: scaleY(1.2);
+  transform-origin: middle;
+  display: inline-block;
+  padding-right: 10px;
+  vertical-align: top;
+}
+
+h2 {
+  color: #AAA;
+  font-size: 17px;
+  margin: 0 6px;
+}
+#title {
+  display: inline;
+}
+#node-label {
+  display: none;
+  margin-top: 3px;
+}
+
+/* Text info zone */
+
+.sidebar-text {
+  clear: both;
+  display: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  line-height: 16px;
+}
+#explanations {
+  border-top: 1px dashed #444;
+  border-bottom: 1px dashed #444;
+  opacity: 0;
+  -webkit-transition: opacity 0.75s ease-in-out;
+  -moz-transition: opacity 0.75s ease-in-out;
+  -o-transition: opacity 0.75s ease-in-out;
+  transition: opacity 0.75s ease-in-out;
+}
+#explanations p {
+  margin: 7px 25px;
+}
+
+#order {
+  min-width: 20px;
+  display: inline-block;
+}
+#clusters-legend b span {
+  white-space: nowrap;
+}
+
+#node-details {
+  text-align: center;
+  max-height: 60%;
+  padding-top: 1px;
+  border-bottom: 1px dashed #444;
+}
+#node-img, #comic-img {
+  max-width: 75%;
+  max-height: 400px;
+  cursor: pointer;
+  display: inherit;
+  margin: auto;
+}
+#node-extra {
+  margin: 7px 25px;
+}
+
+/* View more buttons */
+
+.button {
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 10px 0 10px 0!important;
+  text-transform: uppercase;
+  line-height: 20px;
+}
+.button > span {
+  width: 170px;
+  background-color: var(--marvel-red);
+  color: #DDD!important;
+  border: 1px solid #444;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.button.selected, #choices.selected {
+  opacity: 0.35;
+  cursor: progress;
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+}
+.button.selected.left, .button.selected.right {
+  opacity: 1;
+}
+
+/* Switch buttons */
+
+h5 {
+  font-size: 15px;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+#choices {
+  position: absolute;
+  bottom: 36px;
+  width: 300px;
+  height: 64px;
+  padding: 8px 0 0 0;
+  margin: 0;
+}
+.network-choice {
+  display: flex;
+  justify-content: center;
+  position:relative;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 28px;
+}
+#choices .network-choice:last-child {
+  margin-bottom: 0;
+}
+#choices .network-choice:first-child {
+  margin-top: 0;
+}
+
+.network-switch-label, .toggle {
+  height: 100%;
+  border-radius: 3px;
+}
+.network-switch-label {
+  display: block;
+  width: 236px;
+  background-color: #000;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+}
+.toggle {
+  position: absolute;
+  width: 116px;
+  background-color: var(--marvel-red);
+  transition: .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin: -2px 0 0 0px;
+  border: 1px solid #444;
+  height: 30px
+}
+
+.names {
+  font-size: 90%;
+  font-weight: bolder;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  user-select: none;
+}
+.names > div {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left, .right{
+  width: 50%;
+  text-align: center;
+}
+.left {
+  color: white;
+}
+.right {
+  color: var(--marvel-red);
+}
+
+[type="checkbox"] {
+  display: none;
+}
+[type="checkbox"]:disabled + .network-switch-label {
+  cursor: progress;
+}
+[type="checkbox"]:checked + .network-switch-label .toggle {
+  transform: translateX(100%);
+}
+[type="checkbox"]:checked + .network-switch-label .left {
+  color: var(--marvel-red);
+}
+[type="checkbox"]:checked + .network-switch-label .right {
+  color: white;
+}
+
+/* Credits & Help Footer */
+
+#credits {
+  position: absolute;
+  bottom: 0px;
+  width: 300px;
+  line-height: 13px;
+  border-top: 1px dashed #444;
+  background-color: #222;
+  z-index: 2;
+}
+#credits p {
+  font-size: 12px;
+  padding: 3px 0px 0 34px;
+  margin: 0;
+}
+#credits p:last-child {
+  padding-bottom: 3px;
+}
+
+#help {
+  position: absolute;
+  left: 0;
+  margin: 4px;
+  width: 28px;
+  height: 28px;
+  background-color: var(--marvel-red)!important;
+  color: white;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  text-indent: 0px;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #444;
+  border-radius: 20px;
+}
+
+
+/* -------- Comics Histogram ------------*/
+
+#histogram-container {
+  position: absolute;
+  left: 302px;
+  bottom: 0;
+  width: calc(100% - 598px);
+  margin-left: -2px;
+  height: 75px;
+  float: left;
+  background-color: #2B2B2B;
+  color: #AAA;
+  text-align: center;
+  box-shadow: 0px -2px 5px #000;
+}
+
+#histogram-title {
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 2px;
+  white-space: nowrap;
+  position: sticky;
+  z-index: 2;
+  padding-left: 8px;
+}
+
+#histogram, #histogram-hover {
+  display: flex;
+  align-items: flex-end;
+  margin: 0 12px;
+  height: 32px;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+#histogram {
+  margin-top: 3px;
+  border-bottom: 1px solid var(--marvel-red);
+}
+.histobar {
+  display: block;
+  background-color: var(--marvel-red);
+  box-shadow: 0px 0px 2px var(--marvel-red);
+  border-radius: 1px 1px 0 0;
+}
+
+#histogram-hover {
+  margin-top: -31px;
+  cursor: cell;
+}
+.histobar-hover {
+  height: 36px;
+  background-color: #555;
+  opacity: 0;
+}
+
+#histogram-legend {
+  font-size: 12px;
+  font-weight: bold;
+  color: #AAA;
+  padding: 3px 4px 0 4px;
+  text-align: left;
+}
+#histogram-legend div {
+  position: relative;
+  display: inline-block;
+  width: 0;
+}
+
+#histogram-tooltip {
+  display: none;
+  position: absolute;
+  top: 56px;
+  background-color: #555;
+  border-radius: 3px;
+  padding: 2px 3px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  z-index: 1;
+}
+
+
+/* -------- Extra sidebar with comics ------------*/
+
+/* Closed comics bar */
+
+#view-comics-container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 298px;
+  height: 75px;
+  float: left;
+  background-color: #2B2B2B;
+  color: #AAA;
+  text-align: center;
+}
+#view-comics {
+  margin-top: 20px!important;
+}
+#view-comics > span {
+  padding: 7px 2px 7px 10px;
+}
+#view-comics img {
+  transform: rotate(90deg);
+  position: relative;
+  top: 6px;
+  margin-right: 5px;
+}
+
+/* Comics Bar */
+
+#comics-bar {
+  position: absolute;
+  bottom: 0;
+  width: 297px;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-size: 14px;
+  background-color: #222;
+  color: #AAA;
+  float: left;
+  text-align: center;
+  box-shadow: -2px 0 5px #000;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  z-index: 2;
+}
+
+#comics, #comic-details {
+  padding: 5px;
+  text-align: center;
+  overflow-y: auto;
+  line-height: 20px;
+}
+#comics {
+  border-top: 1px dashed #444;
+  overflow-x: hidden;
+  min-height: 35%;
+}
+#comic-details {
+  height: 50%;
+  border-top: 1px dashed #444;
+}
+
+/* Actions Buttons */
+
+#comics-actions {
+  width: 100%;
+  height: 47px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  margin: 0px;
+}
+#comics-actions button {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+button.sort-button.selected {
+  cursor: default;
+}
+button.sort-button img {
+  width: 26px;
+  height: 26px;
+  margin: 3px 0px 0px 1px;
+}
+
+#comics-pause {
+  display: none;
+}
+
+#filter-comics {
+  display: none;
+}
+#filter-input {
+  width: calc(100% - 7px);
+  margin: -1px 0px 4px 0px;
+  padding: 0 10px;
+  font-family: "DejaVu Sans Mono", "DejaVuSansMono", monospace;
+  font-size: 14px;
+  color: #FFF;
+  background: #333;
+  border: 1px solid #444;
+  line-height: 24px;
+  outline: none;
+}
+#comics-subtitle {
+  margin-bottom: 5px;
+  display: none;
+}
+
+/* Comics List */
+
+#comics-list {
+  display: contents;
+}
+#comics-list li {
+  padding: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  list-style-type: none;
+}
+#comics-list li:nth-child(even) {
+  background: #2F2F2F;
+}
+@media (hover: hover) and (pointer: fine) {
+  #comics-list li:hover {
+    background: var(--marvel-red-dark);
+    color: white;
+  }
+}
+#comics-list li.selected {
+  background: var(--marvel-red);
+  color: white!important;
+  font-weight: bold;
+}
+#comics-cache {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  z-index: 5;
+  cursor: pointer;
+}
+
+/* Single Comic Details */
+
+#comic-img {
+  max-width: 90%;
+  padding-top: 5px;
+}
+#comic-title {
+  margin: 0;
+}
+#comic-desc {
+  line-height: 16px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#comic-url {
+  display: none;
+}
+
+.comic-entities {
+  display: none;
+  width: calc(50% - 4px);
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+.comic-entities h4 {
+  margin: 10px 0 5px 0;
+}
+.comic-entities ul {
+  padding: 0;
+  margin: 0px 0px 10px 0px;
+}
+.comic-entities li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.comic-entities li.entity-link {
+  cursor: pointer;
+}
+#comic-creators {
+  padding: 0 2px 0 0;
+}
+#comic-characters {
+  padding: 0 0 0 2px;
+}
+#comic-creators li:nth-child(even) {
+  background: #2F2F2F;
+}
+#comic-characters li:nth-child(odd) {
+  background: #2F2F2F;
+}
+
+
+/* -------- Graph zone ------------*/
+
+.sigma-container {
+  position: absolute;
+  top: 0px;
+  left: 301px;
+  height: calc(100% - 76px);
+  width: calc(100% - 302px);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+.sigma-edges {
+  opacity: 0.5;
+}
+
+/* Creators era labels layer */
+
+#clusters-layer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.cluster-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 3px 8px;
+  background-color: rgba(0, 0, 0, 0.55);
+  border-radius: 14px;
+  text-align: center;
+}
+
+/* Action Buttons */
+
+#controls {
+  position: absolute;
+  top: 2px;
+  text-align: center;
+  width: 168px;
+}
+#sigma-buttons {
+  display: flex;
+  vertical-align: middle;
+}
+
+#zoom-reset img {
+  margin: 2px;
+}
+
+#regscreen {
+  display: none;
+}
+#fullscreen {
+  display: block;
+}
+@media all and (display-mode: fullscreen) {
+  #regscreen {
+    display: block;
+  }
+  #fullscreen {
+    display: none;
+  }
+}
+
+#search {
+  margin: 2px;
+  margin-right: 5px;
+  width: 164px;
+}
+#search-icon {
+  position: absolute;
+  top: 49px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+#search input {
+  width: 100%;
+  padding: 4px 5px 4px 27px;
+  text-align: center;
+  font-family: "DejaVu Sans Mono", "DejaVuSansMono", monospace;
+  font-size: 14px;
+  line-height: 19px;
+  color: #FFF;
+  background: #333;
+  display: block;
+  border: 1px solid #444;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  outline: none;
+}
+#suggestions-select {
+  display: none;
+  font-family: "DejaVu Sans Mono", "DejaVuSansMono", monospace;
+  width: 164px;
+  height: 28px;
+  border: 1px solid #444;
+  padding-left: 20px;
+  color: #FFF;
+  background: #333;
+}
+/* Handle Chrome's blue cross and focus border */
+input::-webkit-search-cancel-button {
+  filter: grayscale(100%);
+  cursor: pointer;
+}
+#suggestions-select:focus {
+  outline-style: none;
+  box-shadow: none;
+}
+
+
+/* Hint legend box */
+
+#legend {
+  position: absolute;
+  opacity: 0.15;
+  top: 4px;
+  line-height: 19px;
+  font-size: 14px;
+  padding: 5px 10px 8px 10px;
+  background-color: #444;
+  border-radius: 1px;
+  text-align: center;
+  color: white;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  -moz-transition: opacity 0.25s ease-in-out;
+  -o-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
+#legend p {
+  margin: 0;
+}
+
+
+/* -------- Loaders ------------*/
+
+.loader {
+  position: absolute;
+  z-index: 5;
+  display: none;
+  opacity: 0.85;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  -moz-transition: opacity 0.25s ease-in-out;
+  -o-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
+.loader img {
+  width: 45px;
+  filter: invert(0.1);
+}
+
+#loader {
+  top: calc(50% - 60px);
+  left: calc(50% + 125px);
+  opacity: 0;
+}
+
+#loader-comics {
+  bottom: 20px;
+  left: calc(50% - 68px);
+  display: flex;
+  align-items: center;
+  opacity: 0.6;
+}
+#loader-comics img {
+  width: 42px;
+}
+#loader-comics span {
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #888;
+  margin-left: 10px;
+}
+
+#loader-list {
+  display: none;
+}
+#loader-list img {
+  position: relative;
+  top: 35px;
+  left: 0;
+  width: 45px;
+}
+
+
+/* -------- Modals ------------*/
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.85);
+  text-align: center;
+  cursor: pointer;
+}
+
+/* FullScreen images modal */
+
+#modal-helper {
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+#modal-img {
+  max-width: calc(100% - 15px);
+  max-height: calc(100% - 55px);
+  z-index: 20;
+  vertical-align: middle;
+  margin: 5px 5px 50px 0;
+}
+#modal-img-missing {
+  display: none;
+  position: absolute;
+  top: 45%;
+  left: calc(50% - 150px);
+  color: var(--marvel-red-light);
+  font-size: 36px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  padding: 5px 10px;
+  z-index: 25;
+}
+
+#modal-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+}
+#modal-actions button {
+  margin: 5px 10px;
+  display: inline-block;
+}
+#modal button img {
+  z-index: -1;
+}
+#modal-pause {
+  display: none;
+}
+
+/* Helpbox modal */
+
+#help-box {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: calc(70% - 60px);
+  height: calc(100% - 60px);
+  z-index: 25;
+  overflow-y: auto;
+  background-color: #444;
+  color: #CCC;
+  text-align: left;
+  padding: 30px;
+  margin: 0;
+  transform: scale(0);
+  -webkit-transition: transform .3s linear;
+  -moz-transition: transform .3s linear;
+  -o-transition: transform .3s linear;
+  transition: transform .3s linear;
+  cursor: default;
+}
+#help-box p {
+  margin: 8px;
+  font-size: 14px;
+  line-height: 24px;
+}
+#help-box a, #help-box a:visited {
+  color: #af7f7f;
+  text-decoration: none;
+}
+#help-box a:hover, #help-box a:visited:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Portrait modal */
+
+#rotate-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+  background-color: rgba(0, 0, 0, 0.85);
+  text-align: center;
+}
+
+#rotate-modal h2 {
+  background-color: var(--marvel-red);
+  color: white;
+  font-size: 34px!important;
+  padding: 5px 0!important;
+  margin: 0px 0px 10px 0px;
+}
+#rotate-modal .marvel {
+  font-size: 36px!important;
+  transform: scaleY(1.2)!important;
+  padding-right: 15px!important;
+}
+
+#rotate-modal-img {
+  position: relative;
+  top: 25%;
+  left: 0;
+  min-width: 25%;
+  max-width: 45%;
+}
+
+#rotate-modal p {
+  display: block;
+  position: relative;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  background-color: var(--marvel-red);
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 15px 0px;
+}
+#rotate-modal p small {
+  font-size: 14px;
+  text-transform: lowercase;
+  padding: 15px 5px 5px 5px;
+  display: inline-block;
+  line-height: 20px;
+}
+
+@media (orientation: landscape) {
+  #rotate-modal {
+    z-index: -1;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s linear;
+    -moz-transition: opacity 0.5s linear;
+    -o-transition: opacity 0.5s linear;
+    transition: opacity 0.5s linear;
+  }
+  #rotate-modal p, #rotate-modal-img {
+    height: 0;
+  }
+}
+
+@media (orientation: portrait) {
+  #rotate-modal {
+    opacity: 1;
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+  }
+  .logo {
+    display: block;
+    padding: 5px;
+    height: 44px;
+  }
+  #sidebar, #controls, #comics-bar, #histogram-container, #view-comics-container {
+    display: none!important;
+  }
+  #explanations, #node-details {
+    opacity: 0!important;
+  }
+  #loader {
+    top: 20%;
+    left: calc(50% - 25px)!important;
+  }
+  #sigma-container {
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 1000px) {
+  #rotate-modal p {
+    font-size: 24px;
+  }
+  #rotate-modal p small {
+    display: none;
+  }
+}
+
+
+/* -------- Responsiveness ------------*/
+
+.show-middle {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  #controls {
+    left: 201px;
+  }
+  #search-icon {
+    left: 7px;
+  }
+  #comics-bar {
+    right: 0;
+  }
+}
+
+@media (min-width: 1001px) {
+  #controls {
+    left: 302px;
+  }
+  #search-icon {
+    left: 7px;
+  }
+  .large-bar {
+    display: inline;
+  }
+}
+
+@media (max-width: 1000px) {
+  .hide-small {
+    display: none;
+  }
+  .show-middle {
+    display: inline;
+  }
+  #sidebar, #choices, #credits {
+    width: 198px;
+  }
+  .sigma-container {
+    left: 199px;
+    width: calc(100% - 200px);
+  }
+  #comics-bar {
+    width: 254px;
+  }
+  #view-comics-container {
+    width: 255px;
+  }
+  #histogram-container {
+    left: 200px;
+    width: calc(100% - 453px);
+  }
+  #comics-filter {
+    display: none;
+  }
+  h5 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  #explanations p, #node-extra {
+    margin: 7px 8px;
+  }
+  #histogram-legend .hidable {
+    display: none;
+  }
+  #legend {
+    line-height: 19px;
+    font-size: 13px;
+  }
+  #loader {
+    left: calc(50% + 75px);
+  }
+  .logo {
+    height: 42px;
+  }
+  h1 {
+    font-size: 20px!important;
+    padding: 10px 0!important;
+  }
+  .marvel {
+    font-size: 22px!important;
+    transform: scaleY(1.3);
+    padding-right: 7px!important;
+    letter-spacing: -0.5px!important;
+  }
+  h2 {
+    font-size: 14.6px;
+    padding: 0px 2px;
+  }
+  .network-switch-label {
+    width: 190px;
+  }
+  #choices {
+    padding: 6px 0 0 0;
+    height: 56px;
+  }
+  .toggle {
+    width: 93px;
+    height: 30px;
+  }
+  .names > div {
+    font-size: 14px;
+  }
+  #view-node, #view-comics {
+    font-size: 14px;
+  }
+  #sidebar, #comics-bar {
+    font-size: 13px;
+  }
+  #comics-list li {
+    padding: 2px;
+  }
+  .large-bar {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  #choices {
+    height: 100px!important;
+    padding: 0!important;
+  }
+  #comics-bar {
+    left: 0;
+    bottom: 35px;
+    height: calc(100% - 84px);
+    border: 1px solid #333;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 2px 2px 5px #000;
+  }
+  #controls {
+    right: 2px;
+  }
+  #legend {
+    transform: translateX(-168px);
+  }
+  #search-icon {
+    right: 144px;
+  }
+  #histogram-container {
+    width: calc(100% - 198px);
+  }
+  #view-comics-container {
+    position: fixed;
+    left: 0;
+    width: 198px;
+    height: 37px;
+    bottom: 36px;
+    background-color: #222;
+    padding-bottom: 4px;
+    z-index: 2;
+  }
+  #view-comics {
+    border-top: 1px dashed #444;
+    width: 100%;
+    padding: 0;
+    margin: 0!important;
+  }
+  #view-comics span {
+    padding: 5px 10px;
+    margin: 0
+  }
+  #view-comics img {
+    margin: 0;
+    top: 7px;
+  }
+  #loader-comics {
+    left: calc(50% + 14px);
+  }
+  h5 {
+    padding-top: 6px;
+  }
+  .hide-small {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) and (min-height: 600px) {
+  #choices {
+    height: 104px!important;
+  }
+}
+@media (max-height: 400px) {
+  h2 {
+    font-size: 14.6px;
+    padding: 0px 2px;
+  }
+  #comic-details {
+    height: calc(100% / 3);
+  }
+  #comics-list li {
+    font-size: 13px!important;
+  }
+}
+
+@media (max-height: 600px) {
+  h2 {
+    font-size: 14.6px;
+    padding: 0px 2px;
+  }
+  #header {
+    padding-bottom: 5px;
+  }
+  .network-choice {
+    height: 25px;
+    margin-bottom: 8px;
+  }
+  .toggle {
+    height: 27px;
+  }
+  #choices {
+    padding: 6px 0 0 0;
+    height: 56px;
+  }
+  h5 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .logo {
+    height: 42px;
+  }
+  h1 {
+    font-size: 28px;
+    padding: 4px 0;
+    margin: 0 0 5px 0;
+  }
+  .marvel {
+    font-size: 32px;
+    transform: scaleY(1.3);
+  }
+  #sidebar, #comics-bar {
+    font-size: 13px;
+  }
+  #comics {
+    line-height: 18px;
+  }
+  #comics-list li {
+    padding: 2px;
+    font-size: 14px;
+  }
+  #loader-list img {
+    top: 10px;
+  }
+  #modal-img {
+    max-height: calc(100% - 15px);
+    max-width: calc(100% - 15px);
+    margin: 0;
+  }
+  #modal-actions {
+    height: 100%;
+  }
+  #modal-actions button {
+    position: absolute;
+    margin: 5px;
+  }
+  #modal-previous {
+    top: calc(50% - 17px);
+    left: 0;
+  }
+  #modal-next {
+    top: calc(50% - 17px);
+    right: 0;
+  }
+  #modal-play, #modal-pause {
+    bottom: calc(100% - 45px);
+    left: 0;
+  }
+}
+
+
+/* -------- Touch handling ------------*/
+
+@media not (pointer: coarse) {
+  .histobar-hover:hover {
+    background-color: white;
+    opacity: 0.25;
+  }
+  .desktop-details {
+    display: inline;
+  }
+  .mobiles-details {
+    display: none;
+  }
+}
+
+@media (pointer: coarse) {
+  html, body {
+    touch-action: pan-x, pan-y;
+  }
+  * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .histobar-hover.highlighted {
+    background-color: white;
+    opacity: 0.25;
+  }
+  input, textarea, button, select, a, label, div, p {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  #search input {
+    display: none;
+  }
+  #suggestions-select {
+    display: block;
+  }
+  #comics-cache {
+    display: none!important;
+  }
+  .desktop-details {
+    display: none;
+  }
+  .mobiles-details {
+    display: inline;
+  }
+}
