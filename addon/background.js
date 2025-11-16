@@ -1,49 +1,153 @@
 // background.js
 (() => {
-  'use strict';
-
-  // Cross-browser shim
+  "use strict";
   const browserApi =
-    (typeof self !== 'undefined' && (self.browser || self.chrome)) ||
-    (typeof window !== 'undefined' && (window.browser || window.chrome)) ||
-    browser || chrome;
+    (typeof browser !== "undefined" && browser) ||
+    (typeof chrome !== "undefined" && chrome) ||
+    null;
+  if (!browserApi) return;
 
-  // Listen for scrape results from content.js
-  browserApi.runtime.onMessage.addListener(async (msg, _sender, _sendResponse) => {
-    if (!msg || msg.type !== 'SCRAPE_RESULT') return;
+  browserApi.runtime.onMessage.addListener((msg, sender) => {
+    if (!msg || msg.type !== "HARVEST_GROUPS_AND_LIST") return;
+    (async () => {
+      const { listUrl, sortingUrl } = msg;
+      const currentWindowId = sender?.tab?.windowId;
+      let workerTabId = null;
 
-    try {
-      const { data = [] } = msg; // [{ text, href }, ...]
-      const csv = toCSV(data);
+      try {
+        // --- 1) List_of_Aesthetics: collect mainspace pages (no “Category:” here) ---
+        if (listUrl) {
+          workerTabId = await ensureWorkerTab(workerTabId, listUrl, currentWindowId);
+          await waitForComplete(workerTabId);
+          const listLinks = await exec(workerTabId, scrapeListOfAesthetics.toString(), listUrl);
+          await saveText(
+            oneColTsv(["url"], listLinks),
+            "markVPS.github.io/tsv/aesthetics_list.tsv"
+          );
+        }
 
-      // Use an object URL (Blob) for efficiency; data URLs also work if preferred
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
-      const url = (self.URL || URL).createObjectURL(blob);
-
-      await browserApi.downloads.download({
-        url,
-        filename: 'links.csv', // under the browser's Downloads directory
-        saveAs: false,                            // no dialog; instantaneous
-        conflictAction: 'overwrite'               // replace existing file
-      });
-    } catch (err) {
-      console.error('Failed to create/download CSV:', err);
-    }
+        // --- 2) Category:Sorting → collect ONLY Category:* links into one TSV ---
+        if (sortingUrl) {
+          workerTabId = await ensureWorkerTab(workerTabId, sortingUrl, currentWindowId);
+          await waitForComplete(workerTabId);
+          const groupLinks = await exec(workerTabId, scrapeSortingCategoriesOnly.toString(), sortingUrl);
+          await saveText(
+            oneColTsv(["url"], groupLinks),
+            "markVPS.github.io/tsv/groups.tsv"   // <-- single file, no groups/ folder
+          );
+        }
+      } catch (e) {
+        console.error("[harvest] error:", e);
+      } finally {
+        if (workerTabId) {
+          try { await browserApi.tabs.remove(workerTabId); } catch {}
+        }
+      }
+    })();
   });
 
-  function toCSV(rows) {
-    // Ensure consistent columns even if text is empty
-    const keys = ['text', 'href'];
+  // ---------- helpers ----------
+  async function ensureWorkerTab(tabId, url, windowId) {
+    if (!tabId) {
+      const tab = await browserApi.tabs.create({ url, active: false, ...(windowId ? { windowId } : {}) });
+      return tab.id;
+    } else {
+      await browserApi.tabs.update(tabId, { url, active: false });
+      return tabId;
+    }
+  }
 
-    const esc = (val) => {
-      if (val == null) return '';
-      const s = String(val);
-      // Escape quotes and wrap if contains comma, quote, or newline
-      return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-    };
+  function waitForComplete(tabId) {
+    return new Promise((resolve) => {
+      const listener = (id, info) => {
+        if (id === tabId && info.status === "complete") {
+          browserApi.tabs.onUpdated.removeListener(listener);
+          resolve();
+        }
+      };
+      browserApi.tabs.onUpdated.addListener(listener);
+      // safety timeout
+      setTimeout(() => {
+        try { browserApi.tabs.onUpdated.removeListener(listener); } catch {}
+        resolve();
+      }, 20000);
+    });
+  }
 
-    const header = keys.join(',');
-    const body = rows.map((r) => keys.map((k) => esc(r[k])).join(','));
-    return [header, ...body].join('\n');
+  async function exec(tabId, fnString, urlArg) {
+    const results = await browserApi.tabs.executeScript(tabId, {
+      runAt: "document_idle",
+      code: `(${fnString})(${JSON.stringify(urlArg)})`,
+    });
+    return Array.isArray(results) ? results[0] || [] : results || [];
+  }
+
+  function oneColTsv(headers, rows) {
+    const lines = [];
+    lines.push(headers.join('\t'));
+    const seen = new Set();
+    for (const r of rows) {
+      const v = String(r || '').replace(/[\r\n]+/g, ' ').trim();
+      if (!v || seen.has(v)) continue;
+      seen.add(v);
+      lines.push(v);
+    }
+    return lines.join('\n') + '\n';
+  }
+
+  async function saveText(text, filename) {
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const url = (self.URL || URL).createObjectURL(blob);
+    await browserApi.downloads.download({
+      url,
+      filename,             // e.g., markVPS.github.io/tsv/groups.tsv
+      saveAs: false,
+      conflictAction: "overwrite",
+    });
+  }
+
+  function normAbs(href, base) {
+    try { return new URL(href, base).toString(); } catch { return null; }
+  }
+
+  // ---------- in-page scrapers ----------
+
+  // A) List_of_Aesthetics: grab mainspace pages (no colon in the /wiki/<Title>)
+  function scrapeListOfAesthetics(baseUrl) {
+    const out = [];
+    const root = document.querySelector("div.twocolumn") || document.querySelector("#mw-content-text") || document.body;
+    if (root) {
+      for (const a of root.querySelectorAll("a[href]")) {
+        const abs = (function(h){ try { return new URL(h, baseUrl).toString(); } catch { return null; } })(a.getAttribute("href"));
+        if (!abs) continue;
+        if (!abs.startsWith("https://aesthetics.fandom.com/wiki/")) continue;
+        // exclude special namespaces ONLY here; List pages are mainspace
+        const after = abs.split("/wiki/")[1] || "";
+        if (!after || after.includes(":")) continue;     // keep mainspace only
+        out.push(abs);
+      }
+    }
+    const seen = new Set(), unique = [];
+    for (const u of out) if (!seen.has(u)) { seen.add(u); unique.push(u); }
+    return unique;
+  }
+
+  // B) Category:Sorting → collect ONLY Category:* links
+  function scrapeSortingCategoriesOnly(baseUrl) {
+    const out = [];
+    const root = document.querySelector("#mw-content-text") || document.body;
+    if (root) {
+      // select anchors with the right class AND whose title begins with "Category:"
+      for (const a of root.querySelectorAll('a.category-page__member-link[href][title^="Category:"]')) {
+        const abs = (function(h){ try { return new URL(h, baseUrl).toString(); } catch { return null; } })(a.getAttribute("href"));
+        if (!abs) continue;
+        // Sanity: make sure they are actually /wiki/Category:*
+        if (!/\/wiki\/Category:/.test(abs)) continue;
+        out.push(abs);
+      }
+    }
+    const seen = new Set(), unique = [];
+    for (const u of out) if (!seen.has(u)) { seen.add(u); unique.push(u); }
+    return unique;
   }
 })();

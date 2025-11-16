@@ -1,18 +1,18 @@
 {
   "manifest_version": 2,
-  "name": "TwoColumn Link Scraper (Aesthetics Wiki)",
-  "version": "1.0.0",
-  "description": "Adds a button to download all links inside div.twocolumn from the List of Aesthetics page.",
-  "permissions": ["activeTab", "downloads"],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
+  "name": "Aesthetics: Lists → TSV/JSON",
+  "version": "1.2.0",
+  "description": "On Category:Aesthetics_Wiki, gather the full aesthetics list (all .twocolumn blocks) and Sorting groups (.category-page__member-left), save TSVs, plus JSON for aesthetics.",
+  "permissions": ["downloads", "tabs", "https://aesthetics.fandom.com/*"],
+  "background": { "scripts": ["background.js"], "persistent": false },
   "content_scripts": [
     {
-      "matches": ["https://aesthetics.fandom.com/wiki/List_of_Aesthetics*"],
+      "matches": ["https://aesthetics.fandom.com/wiki/Category:Aesthetics_Wiki*"],
       "js": ["content.js"],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": { "id": "aesthetics-lists@example.com", "strict_min_version": "91.0" }
+  }
 }

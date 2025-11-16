@@ -1,82 +1,74 @@
 // content.js
 (() => {
   'use strict';
+  const browserApi =
+    (typeof browser !== 'undefined' && browser) ||
+    (typeof chrome  !== 'undefined' && chrome)  || null;
+  if (!browserApi) return;
 
-  // Cross-browser shim
-  const browserApi = (typeof window !== 'undefined' && (window.browser || window.chrome)) || browser || chrome;
+  if (window.__aesth_lists_injected__) return;
+  window.__aesth_lists_injected__ = true;
 
-  if (window.__twocolumn_scraper_injected__) return;
-  window.__twocolumn_scraper_injected__ = true;
-
-  // Wait for DOM if needed
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
+  const ready = () => init();
+  (document.readyState === 'loading')
+    ? document.addEventListener('DOMContentLoaded', ready, { once: true })
+    : ready();
 
   function init() {
-    // Find the p-views menu's <ul>
-    const pViewsUl = document.querySelector('#p-views ul');
-    if (!pViewsUl) return;
+    const container =
+      document.querySelector('#p-views .page-header__actions') ||
+      document.querySelector('#p-views') ||
+      document.querySelector('.page-header__actions') ||
+      document.querySelector('#content') ||
+      document.body;
 
-    // Create <li><a>Download data</a></li> styled like other action tabs
-    const li = document.createElement('li');
-    li.id = 'ca-download-links';
+    const btn = document.createElement('a');
+    btn.href = '#';
+    btn.id = 'ca-download-lists';
+    btn.className = 'wds-button wds-is-text page-header__action-button has-label';
+    btn.textContent = 'Download lists (TSV + JSON)';
+    const ve = document.querySelector('#ca-ve-edit');
+    if (ve && ve.parentNode === container) container.insertBefore(btn, ve);
+    else container.appendChild(btn);
 
-    const a = document.createElement('a');
-    a.href = '#';
-    a.textContent = 'Download data';
-    a.style.cursor = 'pointer';
-    li.appendChild(a);
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const original = btn.textContent;
+      btn.textContent = 'Scanning…';
 
-    // Insert before VisualEditor tab if present, otherwise append at end
-    const veLi = document.querySelector('#ca-ve-edit');
-    if (veLi && veLi.parentNode === pViewsUl) {
-      pViewsUl.insertBefore(li, veLi);
-    } else {
-      pViewsUl.appendChild(li);
-    }
+      const listUrl   = findExactHref('https://aesthetics.fandom.com/wiki/List_of_Aesthetics');
+      const sortingUrl= findExactHref('https://aesthetics.fandom.com/wiki/Category:Sorting');
 
-    a.addEventListener('click', async (ev) => {
-      ev.preventDefault();
-
-      // Simple UI feedback
-      const originalText = a.textContent;
-      a.textContent = 'Saving…';
-      a.style.opacity = '0.7';
-
-      // Collect links inside div.twocolumn
-      const anchors = Array.from(document.querySelectorAll('div.twocolumn a[href]'));
-      const seen = new Set();
-      const rows = [];
-
-      for (const el of anchors) {
-        const href = el.href;
-        if (!href) continue;
-        if (seen.has(href)) continue;
-        seen.add(href);
-        rows.push({
-          text: (el.innerText || el.textContent || '').trim(),
-          href
-        });
+      if (!listUrl && !sortingUrl) {
+        btn.textContent = 'Target links not found';
+        setTimeout(() => (btn.textContent = original), 2500);
+        return;
       }
 
       try {
         await browserApi.runtime.sendMessage({
-          type: 'SCRAPE_RESULT',
-          data: rows
+          type: 'HARVEST_LISTS_ONLY',
+          listUrl,
+          sortingUrl
         });
-        a.textContent = 'Done ✓';
-      } catch (e) {
-        console.error('Download sendMessage failed:', e);
-        a.textContent = 'Error — see console';
+        btn.textContent = 'Working… (check Downloads)';
+      } catch (err) {
+        console.error(err);
+        btn.textContent = 'Error — see console';
       } finally {
-        a.style.opacity = '1';
-        setTimeout(() => {
-          a.textContent = originalText;
-        }, 1200);
+        setTimeout(() => (btn.textContent = original), 2500);
       }
     });
+  }
+
+  function findExactHref(target) {
+    const as = Array.from(document.querySelectorAll('a[href]'));
+    for (const a of as) {
+      try {
+        const abs = new URL(a.getAttribute('href'), location.origin).toString();
+        if (abs === target) return abs;
+      } catch {}
+    }
+    return null;
   }
 })();
