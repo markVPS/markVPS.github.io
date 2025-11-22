@@ -27,6 +27,7 @@
     btn.id = 'ca-download-lists';
     btn.className = 'wds-button wds-is-text page-header__action-button has-label';
     btn.textContent = 'Download lists (TSV + JSON)';
+
     const ve = document.querySelector('#ca-ve-edit');
     if (ve && ve.parentNode === container) container.insertBefore(btn, ve);
     else container.appendChild(btn);
@@ -36,8 +37,11 @@
       const original = btn.textContent;
       btn.textContent = 'Scanning…';
 
-      const listUrl   = findExactHref('https://aesthetics.fandom.com/wiki/List_of_Aesthetics');
-      const sortingUrl= findExactHref('https://aesthetics.fandom.com/wiki/Category:Sorting');
+      const listUrl    = findLinkByPath('/wiki/List_of_Aesthetics');
+      const sortingUrl = findLinkByPath('/wiki/Category:Sorting');
+
+      console.log('[content] found listUrl:', listUrl);
+      console.log('[content] found sortingUrl:', sortingUrl);
 
       if (!listUrl && !sortingUrl) {
         btn.textContent = 'Target links not found';
@@ -47,13 +51,13 @@
 
       try {
         await browserApi.runtime.sendMessage({
-          type: 'HARVEST_LISTS_ONLY',
+          type: 'HARVEST_GROUPS_AND_LIST',
           listUrl,
           sortingUrl
         });
         btn.textContent = 'Working… (check Downloads)';
       } catch (err) {
-        console.error(err);
+        console.error('[content] sendMessage error:', err);
         btn.textContent = 'Error — see console';
       } finally {
         setTimeout(() => (btn.textContent = original), 2500);
@@ -61,12 +65,13 @@
     });
   }
 
-  function findExactHref(target) {
+  // robust finder: matches by pathname suffix (no need for absolute URL equality)
+  function findLinkByPath(pathSuffix) {
     const as = Array.from(document.querySelectorAll('a[href]'));
     for (const a of as) {
       try {
-        const abs = new URL(a.getAttribute('href'), location.origin).toString();
-        if (abs === target) return abs;
+        const abs = new URL(a.getAttribute('href'), location.origin);
+        if (abs.pathname === pathSuffix) return abs.toString();
       } catch {}
     }
     return null;

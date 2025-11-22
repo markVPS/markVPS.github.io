@@ -1,9 +1,13 @@
 {
   "manifest_version": 2,
   "name": "Aesthetics: Lists → TSV/JSON",
-  "version": "1.2.0",
-  "description": "On Category:Aesthetics_Wiki, gather the full aesthetics list (all .twocolumn blocks) and Sorting groups (.category-page__member-left), save TSVs, plus JSON for aesthetics.",
-  "permissions": ["downloads", "tabs", "https://aesthetics.fandom.com/*"],
+  "version": "1.3.0",
+  "description": "Collect full aesthetics list (all .twocolumn blocks) and Category groups; save TSVs + JSON.",
+  "permissions": [
+    "downloads",
+    "tabs",
+    "https://aesthetics.fandom.com/*"
+  ],
   "background": { "scripts": ["background.js"], "persistent": false },
   "content_scripts": [
     {

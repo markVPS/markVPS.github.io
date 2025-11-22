@@ -1,46 +1,81 @@
 // background.js
 (() => {
   "use strict";
+
   const browserApi =
     (typeof browser !== "undefined" && browser) ||
     (typeof chrome !== "undefined" && chrome) ||
     null;
-  if (!browserApi) return;
+  if (!browserApi) {
+    console.error("[bg] no browser API");
+    return;
+  }
+
+  console.log("[bg] loaded");
 
   browserApi.runtime.onMessage.addListener((msg, sender) => {
+    console.log("[bg] message:", msg);
     if (!msg || msg.type !== "HARVEST_GROUPS_AND_LIST") return;
+
     (async () => {
       const { listUrl, sortingUrl } = msg;
       const currentWindowId = sender?.tab?.windowId;
       let workerTabId = null;
 
       try {
-        // --- 1) List_of_Aesthetics: collect mainspace pages (no “Category:” here) ---
+        // 1) List_of_Aesthetics: ALL .twocolumn sections → mainspace links
         if (listUrl) {
+          console.log("[bg] listUrl:", listUrl);
           workerTabId = await ensureWorkerTab(workerTabId, listUrl, currentWindowId);
           await waitForComplete(workerTabId);
-          const listLinks = await exec(workerTabId, scrapeListOfAesthetics.toString(), listUrl);
+
+          const aestheticsLinks = await exec(
+            workerTabId,
+            scrapeAllTwocolumnAesthetics.toString(),
+            listUrl
+          );
+          console.log("[bg] aesthetics count:", aestheticsLinks.length);
+
           await saveText(
-            oneColTsv(["url"], listLinks),
+            oneColTsv(["url"], aestheticsLinks),
             "markVPS.github.io/tsv/aesthetics_list.tsv"
           );
+          await saveJson(
+            aestheticsLinks,
+            "markVPS.github.io/json/aesthetics_list.json"
+          );
+        } else {
+          console.log("[bg] no listUrl");
         }
 
-        // --- 2) Category:Sorting → collect ONLY Category:* links into one TSV ---
+        // 2) Category:Sorting: only Category:* via .category-page__member-link + title^="Category:"
         if (sortingUrl) {
+          console.log("[bg] sortingUrl:", sortingUrl);
           workerTabId = await ensureWorkerTab(workerTabId, sortingUrl, currentWindowId);
           await waitForComplete(workerTabId);
-          const groupLinks = await exec(workerTabId, scrapeSortingCategoriesOnly.toString(), sortingUrl);
+
+          const groupLinks = await exec(
+            workerTabId,
+            scrapeSortingCategoriesOnly.toString(),
+            sortingUrl
+          );
+          console.log("[bg] groups count:", groupLinks.length);
+
           await saveText(
             oneColTsv(["url"], groupLinks),
-            "markVPS.github.io/tsv/groups.tsv"   // <-- single file, no groups/ folder
+            "markVPS.github.io/tsv/groups.tsv"
           );
+        } else {
+          console.log("[bg] no sortingUrl");
         }
+
       } catch (e) {
-        console.error("[harvest] error:", e);
+        console.error("[bg] error:", e);
+
       } finally {
         if (workerTabId) {
           try { await browserApi.tabs.remove(workerTabId); } catch {}
+          console.log("[bg] worker tab closed");
         }
       }
     })();
@@ -66,7 +101,6 @@
         }
       };
       browserApi.tabs.onUpdated.addListener(listener);
-      // safety timeout
       setTimeout(() => {
         try { browserApi.tabs.onUpdated.removeListener(listener); } catch {}
         resolve();
@@ -75,55 +109,71 @@
   }
 
   async function exec(tabId, fnString, urlArg) {
-    const results = await browserApi.tabs.executeScript(tabId, {
-      runAt: "document_idle",
-      code: `(${fnString})(${JSON.stringify(urlArg)})`,
-    });
-    return Array.isArray(results) ? results[0] || [] : results || [];
+    try {
+      const results = await browserApi.tabs.executeScript(tabId, {
+        runAt: "document_idle",
+        code: `(${fnString})(${JSON.stringify(urlArg)})`,
+      });
+      return Array.isArray(results) ? (results[0] || []) : (results || []);
+    } catch (e) {
+      console.error("[bg] exec error:", e);
+      throw e;
+    }
   }
 
   function oneColTsv(headers, rows) {
     const lines = [];
-    lines.push(headers.join('\t'));
+    lines.push(headers.join("\t"));
     const seen = new Set();
     for (const r of rows) {
-      const v = String(r || '').replace(/[\r\n]+/g, ' ').trim();
+      const v = String(r || "").replace(/[\r\n]+/g, " ").trim();
       if (!v || seen.has(v)) continue;
       seen.add(v);
       lines.push(v);
     }
-    return lines.join('\n') + '\n';
+    return lines.join("\n") + "\n";
   }
 
   async function saveText(text, filename) {
-    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const blob = new Blob([text], { type: "text/tab-separated-values;charset=utf-8" });
     const url = (self.URL || URL).createObjectURL(blob);
     await browserApi.downloads.download({
       url,
-      filename,             // e.g., markVPS.github.io/tsv/groups.tsv
+      filename,              // -> ~/Downloads/markVPS.github.io/tsv/...
       saveAs: false,
       conflictAction: "overwrite",
     });
   }
 
-  function normAbs(href, base) {
-    try { return new URL(href, base).toString(); } catch { return null; }
+  async function saveJson(obj, filename) {
+    const text = JSON.stringify(obj, null, 2);
+    const blob = new Blob([text], { type: "application/json;charset=utf-8" });
+    const url = (self.URL || URL).createObjectURL(blob);
+    await browserApi.downloads.download({
+      url,
+      filename,              // -> ~/Downloads/markVPS.github.io/json/...
+      saveAs: false,
+      conflictAction: "overwrite",
+    });
   }
 
   // ---------- in-page scrapers ----------
 
-  // A) List_of_Aesthetics: grab mainspace pages (no colon in the /wiki/<Title>)
-  function scrapeListOfAesthetics(baseUrl) {
+  // A) ALL .twocolumn blocks on List_of_Aesthetics → mainspace /wiki/... only
+  function scrapeAllTwocolumnAesthetics(baseUrl) {
+    const toAbs = (h) => { try { return new URL(h, baseUrl).toString(); } catch { return null; } };
+
+    const blocks = Array.from(document.querySelectorAll('div.twocolumn'));
+    const roots = blocks.length ? blocks : [document.querySelector('#mw-content-text') || document.body];
+
     const out = [];
-    const root = document.querySelector("div.twocolumn") || document.querySelector("#mw-content-text") || document.body;
-    if (root) {
-      for (const a of root.querySelectorAll("a[href]")) {
-        const abs = (function(h){ try { return new URL(h, baseUrl).toString(); } catch { return null; } })(a.getAttribute("href"));
+    for (const root of roots) {
+      for (const a of root.querySelectorAll('a[href]')) {
+        const abs = toAbs(a.getAttribute('href'));
         if (!abs) continue;
         if (!abs.startsWith("https://aesthetics.fandom.com/wiki/")) continue;
-        // exclude special namespaces ONLY here; List pages are mainspace
         const after = abs.split("/wiki/")[1] || "";
-        if (!after || after.includes(":")) continue;     // keep mainspace only
+        if (!after || after.includes(":")) continue; // skip Category:, File:, Special:, etc.
         out.push(abs);
       }
     }
@@ -132,16 +182,15 @@
     return unique;
   }
 
-  // B) Category:Sorting → collect ONLY Category:* links
+  // B) Category:Sorting → ONLY Category:* via class + title
   function scrapeSortingCategoriesOnly(baseUrl) {
+    const toAbs = (h) => { try { return new URL(h, baseUrl).toString(); } catch { return null; } };
+    const root = document.querySelector('#mw-content-text') || document.body;
     const out = [];
-    const root = document.querySelector("#mw-content-text") || document.body;
     if (root) {
-      // select anchors with the right class AND whose title begins with "Category:"
       for (const a of root.querySelectorAll('a.category-page__member-link[href][title^="Category:"]')) {
-        const abs = (function(h){ try { return new URL(h, baseUrl).toString(); } catch { return null; } })(a.getAttribute("href"));
+        const abs = toAbs(a.getAttribute('href'));
         if (!abs) continue;
-        // Sanity: make sure they are actually /wiki/Category:*
         if (!/\/wiki\/Category:/.test(abs)) continue;
         out.push(abs);
       }
