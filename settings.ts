@@ -16,78 +16,6 @@ const startYear = 1939,
     artist: "#2b6718",
     both: "#d4a129"
   },
-  clusters = {
-    creators: {
-      "Silver Age": {
-        match: ["Stan Lee", "Steve Ditko", "Jack Kirby"],
-        color: "#DDDDDD"
-      },
-      "Bronze Age": {
-        match: ["Chris Claremont", "John Byrne", "Jim Starlin"],
-        color: "#ff993e"
-      },
-      "Modern Age": {
-        match: ["Jeph Loeb", "Kurt Busiek", "Peter David", "Mark Waid"],
-        color: "#bce25b"
-      },
-      "Millenium Age": {
-        match: ["Kelly Thompson", "Brian Michael Bendis", "Dan Slott"],
-        color: "#5fb1ff"
-      }
-    },
-    characters: {
-      "Avengers": {
-        match: ["Avengers"],
-        color: "#57b23d"
-      },
-      "X-Men": {
-        match: ["X-Men"],
-        color: "#d4a129"
-      },
-      "Spider-Man & Marvel Knights": {
-        match: ["Spider-Man (Peter Parker)"],
-        color: "#822e23"
-      },
-      "Ultimate Universe": {
-        match: ["Ultimates"],
-        color: "#b2ff9d"
-      },
-      "Fantastic Four & Cosmic heroes": {
-        match: ["Fantastic Four"],
-        color: "#234fac"
-      },
-      "Alpha Flight": {
-        match: ["Alpha Flight"],
-        hide: true,
-        color: "#8d32a7"
-      },
-      "Starjammers": {
-        match: ["Corsair"],
-        hide: true,
-        color: "#bce25b"
-      },
-      "Heroes for Hire": {
-        match: ["Fat Cobra"],
-        hide: true,
-        color: "#c45ecf"
-      },
-      "Diverse Heroes": {
-        match: ["Gorilla Man"],
-        hide: true,
-        color: "#bce25b"
-      },
-      "New Mutants & Young X-Men": {
-        match: ["Rockslide"],
-        hide: true,
-        color: "#ff993e"
-      },
-      "X-Statix": {
-        match: ["Dead Girl"],
-        hide: true,
-        color: "#5fb1ff"
-      }
-    }
-  },
   extraPalette = [
     "#bce25b",
     "#0051c4",
@@ -138,7 +66,7 @@ const startYear = 1939,
 export {
   startYear, curYear, totalYears,
   picturesLoadingDelay, playComicsDelay,
-  creatorsRoles, clusters,
+  creatorsRoles,
   extraPalette,
   sigmaSettings
 };
