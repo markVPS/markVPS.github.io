@@ -150,6 +150,30 @@
     <div id="comics-bar">
       <div id="comics-header">
         <div id="comics-actions">
+          <button id="comics-filter" class="tooltip" tooltip="search comics">
+            <img src="./images/search.svg" alt="filter comics" />
+          </button>
+          <button id="comics-sort-date" class="sort-button tooltip selected">
+            <img src="./images/sort-date.svg" alt="sort chronologically" />
+          </button>
+          <button id="comics-sort-alpha" class="sort-button tooltip">
+            <img src="./images/sort-alpha.svg" alt="sort alphabetically" />
+          </button>
+          <button id="comics-prev" class="tooltip" tooltip="previous comic">
+            <img src="./images/left.svg" alt="previous-picture" />
+          </button>
+          <button id="comics-play" class="tooltip" tooltip="start scrolling comics">
+            <img src="./images/play.svg" alt="play" />
+          </button>
+          <button id="comics-pause" class="selected tooltip" tooltip="stop scrolling comics">
+            <img src="./images/pause.svg" alt="pause" />
+          </button>
+          <button id="comics-next" class="tooltip" tooltip="next comic">
+            <img src="./images/right.svg" alt="previous-picture" />
+          </button>
+          <button id="close-bar" class="tooltip" tooltip="close list of&nbsp;comics">
+            <img src="./images/close.svg" alt="close-comics-list" />
+          </button>
         </div>
         <form id="filter-comics" autocomplete="off">
           <input type="search" id="filter-input" placeholder="search…" class="tooltip"
