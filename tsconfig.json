@@ -2,7 +2,8 @@
   "compilerOptions": {
     "outDir": "./build/",
     "noImplicitAny": false,
-    "strict": false,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "target": "es5",
     "sourceMap": true,
     "esModuleInterop": true,
