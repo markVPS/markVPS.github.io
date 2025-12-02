@@ -1,34 +1,34 @@
 const DEBUG = false;
 
-function logDebug(action, vars = {}) {
+function logDebug(action: string, vars: Record<string, any> = {}): void {
   if (DEBUG) console.log(" -> " + action, vars);
 }
 
-function hasClass(element, clss) {
+function hasClass(element: HTMLElement, clss: string): boolean {
   const classes = new Set(element.className.split(/\s+/));
   return classes.has(clss);
 }
 
-function addClass(element, clss) {
+function addClass(element: HTMLElement, clss: string): void {
   const classes = new Set(element.className.split(/\s+/));
   classes.add(clss);
   element.className = Array.from(classes).join(" ");
 }
 
-function rmClass(element, clss) {
+function rmClass(element: HTMLElement, clss: string): void {
   const classes = new Set(element.className.split(/\s+/));
   if (classes.has(clss)) classes.delete(clss);
   element.className = Array.from(classes).join(" ");
 }
 
-function switchClass(element, clss, condition) {
+function switchClass(element: HTMLElement, clss: string, condition: boolean): void {
   const classes = new Set(element.className.split(/\s+/));
   if (classes.has(clss)) classes.delete(clss);
   if (condition) classes.add(clss);
   element.className = Array.from(classes).join(" ");
 }
 
-function fixImage(url, replacement = null) {
+function fixImage(url: string, replacement: HTMLElement | null = null): string {
   if (/image_not_available/.test(url)) {
     if (replacement) replacement.style.display = "block";
     return "";
@@ -37,7 +37,7 @@ function fixImage(url, replacement = null) {
   return url.replace(/^http:/, "");
 }
 
-function formatNumber(x) {
+function formatNumber(x: number): string {
   return (x + "").replace(/(.)(.{3})$/, '<span class="shifted">$1</span>$2');
 }
 
@@ -55,13 +55,13 @@ const monthNames = [
   "november",
   "december",
 ];
-function formatMonth(dat) {
-  const d = new Date(dat);
+function formatMonth(dat: string): string {
+  const _d = new Date(dat);
   return monthNames[new Date(dat).getMonth()] + " " + dat.slice(0, 4);
 }
 
 // Lighten colors function copied from Chris Coyier https://css-tricks.com/snippets/javascript/lighten-darken-color/
-function lightenColor(col, amt = 50) {
+function lightenColor(col: string, amt = 50): string {
   let usePound = false;
   if (col[0] === "#") {
     col = col.slice(1);
@@ -80,44 +80,52 @@ function lightenColor(col, amt = 50) {
   return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
-function meanArray(arr) {
+function meanArray(arr: number[]): number {
   return arr.reduce((a, b) => a + b, 0) / arr.length;
 }
 
-function divWidth(divId) {
-  return document.getElementById(divId).getBoundingClientRect().width;
+function divWidth(divId: string): number {
+  const element = document.getElementById(divId);
+  if (!element) {
+    throw new Error(`Element with id '${divId}' not found`);
+  }
+  return element.getBoundingClientRect().width;
 }
 
-function divHeight(divId) {
-  return document.getElementById(divId).getBoundingClientRect().height;
+function divHeight(divId: string): number {
+  const element = document.getElementById(divId);
+  if (!element) {
+    throw new Error(`Element with id '${divId}' not found`);
+  }
+  return element.getBoundingClientRect().height;
 }
 
-function isTouchDevice() {
+function isTouchDevice(): boolean {
   return (
     "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator["msMaxTouchPoints"] > 0
   );
 }
 
-function webGLSupport() {
+function webGLSupport(): boolean {
   try {
     const canvas = document.createElement("canvas");
     return (
       !!window.WebGLRenderingContext &&
-      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+      !!(canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
     );
   } catch (e) {
     return false;
   }
 }
 
-function rotatePosition(pos, angle) {
+function rotatePosition(pos: { x: number; y: number }, angle: number): { x: number; y: number } {
   return {
     x: pos.x * Math.cos(-angle) - pos.y * Math.sin(-angle),
     y: pos.y * Math.cos(-angle) + pos.x * Math.sin(-angle),
   };
 }
 
-function useWebWorker(script, inputData, callback) {
+function useWebWorker(script: string, inputData: any, callback: (data: any) => void): void {
   const worker_blob = new Blob([script], { type: "application/javascript" });
   const worker_url = URL.createObjectURL(worker_blob);
   const worker = new Worker(worker_url);
@@ -128,7 +136,11 @@ function useWebWorker(script, inputData, callback) {
   worker.postMessage(inputData);
 }
 
-function uncompress(compressed, method, callback) {
+function uncompress(
+  compressed: Uint8Array,
+  method: string,
+  callback: (data: string) => void,
+): void {
   useWebWorker(
     `
     importScripts("${window.location.origin}/pako_inflate.min.js");
@@ -143,7 +155,7 @@ function uncompress(compressed, method, callback) {
   );
 }
 
-function buildComicsList(data, callback) {
+function buildComicsList(data: any, callback: (list: string[]) => void): void {
   useWebWorker(
     `
     self.onmessage = async (evt) => {
