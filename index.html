@@ -140,55 +140,16 @@
       </div>
     </div>
     <div id="legend">
-      <p><span class="desktop-details">click</span><span class="mobiles-details">tap</span> on a picture to select an
-        <span class="characters-details">aesthetic</span> and explore the
-        associated links, details&nbsp;and&nbsp;wiki page
-      </p>
     </div>
     <div id="histogram-container">
-      <div id="histogram-title">
-        <span id="comics-title"></span>
-      </div>
-      <div id="histogram"></div>
-      <div id="histogram-hover"></div>
-      <div id="histogram-legend"></div>
-      <div id="histogram-tooltip"></div>
     </div>
     <div id="view-comics-container">
       <p id="view-comics" class="button tooltip selected">
-        <span>
-          Explore <span class="hide-small">the </span>comics
-          <img src="./images/left.svg" alt="open comics list" />
-        </span>
       </p>
     </div>
     <div id="comics-bar">
       <div id="comics-header">
         <div id="comics-actions">
-          <button id="comics-filter" class="tooltip" tooltip="search comics">
-            <img src="./images/search.svg" alt="filter comics" />
-          </button>
-          <button id="comics-sort-date" class="sort-button tooltip selected">
-            <img src="./images/sort-date.svg" alt="sort chronologically" />
-          </button>
-          <button id="comics-sort-alpha" class="sort-button tooltip">
-            <img src="./images/sort-alpha.svg" alt="sort alphabetically" />
-          </button>
-          <button id="comics-prev" class="tooltip" tooltip="previous comic">
-            <img src="./images/left.svg" alt="previous-picture" />
-          </button>
-          <button id="comics-play" class="tooltip" tooltip="start scrolling comics">
-            <img src="./images/play.svg" alt="play" />
-          </button>
-          <button id="comics-pause" class="selected tooltip" tooltip="stop scrolling comics">
-            <img src="./images/pause.svg" alt="pause" />
-          </button>
-          <button id="comics-next" class="tooltip" tooltip="next comic">
-            <img src="./images/right.svg" alt="previous-picture" />
-          </button>
-          <button id="close-bar" class="tooltip" tooltip="close list of&nbsp;comics">
-            <img src="./images/close.svg" alt="close-comics-list" />
-          </button>
         </div>
         <form id="filter-comics" autocomplete="off">
           <input type="search" id="filter-input" placeholder="search…" class="tooltip"
@@ -207,9 +168,10 @@
         <h4 id="comic-title"></h4>
         <div>
           <p id="comic-desc"></p>
-          <a id="comic-url" target="_blank">More on Fandom:Aesthetics…</a><br />
+          <a id="comic-url" target="_blank">More on Marvel.com…</a><br />
           <div class="comic-entities">
             <h4>crediting:</h4>
+            <ul id="comic-creators"></ul>
           </div>
           <div class="comic-entities">
             <h4>featuring:</h4>
@@ -222,7 +184,7 @@
     </div>
     <div id="loader-comics" class="loader tooltip" tooltip="loading comics…">
       <img src="./images/loader.gif" alt="loading" />
-      <span>loading aestheics...</span>
+      <span>loading comics...</span>
     </div>
     <div id="modal-img-missing">image missing</div>
     <div id="modal" class="modal">
@@ -248,15 +210,19 @@
     </div>
     <div id="help-modal" class="modal">
       <div id="help-box">
-        <p><b>Aesthetic Map</b> is an app that displays network maps of aesthetics where
-          each one is positionned close to those it is most linked with as registered within <a
-            href="https://aesthetics.fandom.com/wiki/Aesthetics_Wiki" target="_blank" rel="noopener">Fandom:&nbsp;Aesthetics</a>.</p>
-        <p>Data, images and descriptions are all provided by Fandom:Aesthetics.<a
-            href="https://aesthetics.fandom.com/wiki/Aesthetics_Wiki" target="_blank" rel="noopener">Fandom:Aesthetics</a></p>
+        <p><b>Aesthetic Wiki graphs</b> is an app that displays network maps of the Marvel characters or creators galaxy where
+          each one is positionned close to those she/he is most linked with as registered within <a
+            href="https://developer.marvel.com/" target="_blank" rel="noopener">Marvel's&nbsp;API</a>.</p>
+        <p>Data, comic book images and photographs are all provided by Marvel. ©&nbsp;2022&nbsp;<a
+            href="https://https://www.marvel.com/" target="_blank" rel="noopener">Marvel</a></p>
         <br />
-        <p>Although Fandom:Aesthetics' data is not always perfect and many pages miss information on their origins or
-          related aesthetics, it still remains really rich over all and results look good enough! They
+        <p>Although Marvel API's data is not always perfect and many comics miss information on their creators or
+          characters, it still remains really rich over all periods since the 40's and results look good enough! They
           should not be considered as totally accurate though.</p>
+        <p>Since associations between authors and comic book issues are more complete within webpages from the <a
+            rel="noopener" href="https://www.marvel.com/comics/series#divider-smart-ad-divider-az"
+            target="_blank">Marvel.com</a>
+          website than within the API, the data was completed accordingly.</p>
         <br />
         <p>The nodes positions are computed using the <a
             href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679" target="_blank"
@@ -274,7 +240,7 @@
         <p>All views have their own URL so each one can be shared directly with a link.</p>
         <p>The app should work on most mobile devices (and <a href="https://sigmajs.org/" target="_blank"
             rel="noopener">Sigma</a>'s
-          dual-touch interactions with the graphs are quite cool!) but exploring the map is way nicer on
+          dual-touch interactions with the graphs are quite cool!) but exploring the graphs and comics is way nicer on
           bigger screens.</p>
         <p>You can <i>"install"</i> it as a mobile app by simply clicking the "Add to home screen" option within your
           device's browser options menu.</p>
@@ -282,8 +248,9 @@
         <p>This web application is entirely built with Free Libre Open Source Software and released as such under the <a
             href="https://github.com/boogheta/Marvel/blob/master/LICENSE" target="_blank" rel="noopener">AGPL V3
             license</a>.</p>
-        <p>The full source code is available on <a href="https://github.com/markVPS/markVPS.github.io/blob/main/README.md" target="_blank"
-            rel="noopener">GitHub</a>. Issues and pull requests</a> welcome!</p>
+        <p>The full source code is available on <a href="https://github.com/boogheta/Marvel/" target="_blank"
+            rel="noopener">GitHub</a>. <a href="https://github.com/boogheta/Marvel/issues" target="_blank"
+            rel="noopener">Issues and pull requests</a> welcome!</p>
         <br />
         <p>Data collection and preparation in Python with <a href="https://requests.readthedocs.io/" target="_blank"
             rel="noopener">requests</a> and <a href="https://networkx.org/" target="_blank" rel="noopener">NetworkX</a>.
@@ -300,9 +267,43 @@
           from <a href="https://github.com/artcoholic/akar-icons" target="_blank" rel="noopener">artcoholic</a> &amp; <a
             href="https://github.com/twbs/icons" target="_blank" rel="noopener">Bootstrap</a>.</p>
         <br />
-        <p>Thanks to the Fandom:Aesthetics Wiki for bringing all of these together and providing the <a
-            href="https://aesthetics.fandom.com/wiki/Aesthetics_Wiki" target="_blank" rel="noopener">Data</a> which makes this app possible.
+        <p>Thanks to <a href="#/creators/?creator=Stan+Lee&comics"
+            onclick="document.getElementById('close-help').onclick()">Stan Lee</a>, <a
+            href="#/characters/?creator=Jack+Kirby&comics"
+            onclick="document.getElementById('close-help').onclick()">Jack Kirby</a> and all the amazing <a
+            href="https://www.marvel.com/" target="_blank" rel="noopener">Marvel comics</a> authors who brought us so
+          many incredible
+          stories and uncanny characters over the past decades!<br />
+          And thanks to MARVEL for bringing all of those together and providing the <a
+            href="https://developer.marvel.com/" target="_blank" rel="noopener">API</a> which makes this app possible.
         </p>
+        <p>Thanks to <a href="https://github.com/Yomguithereal" target="_blank" rel="noopener">Guillaume Plique</a>, <a
+            href="https://github.com/paulgirard" target="_blank" rel="noopener">Paul Girard</a>, <a
+            href="https://github.com/jacomyal" target="_blank" rel="noopener">Alexis Jacomy</a>, <a
+            href="https://github.com/jacomyMa" target="_blank" rel="noopener">Mathieu Jacomy</a>
+          and <a href="https://github.com/robindemourat" target="_blank" rel="noopener">Robin de Mourat</a> for their
+          precious help,
+          ideas and code libraries!</p>
+        <p>And lots of thanks to the 2014 Amsterdam <a href="http://contropedia.net/" target="_blank"
+            rel="noopener">Contropedia</a>
+          datasprint where this whole idea germinated before it got buried in my mind and GitHub repositories for 8 long
+          years. :)</p>
+        <br />
+        <p>If you're interested in Marvel and graphs, you can also watch this <a
+            href="https://livestream.com/hugeinc/events/2474611/videos/32324838" target="_blank" rel="noopener">cool
+            talk</a>
+          from <a href="https://github.com/dethtron5000" target="_blank" rel="noopener">Peter Olson</a> from Marvel IT
+          in 2013 in which
+          he
+          explains how and why they used the Neo4J graph database to modelize <a
+            href="https://marvelentertainment.tumblr.com/post/30536120271/marvel-universe-data" target="_blank"
+            rel="noopener">their
+            data</a>.</p>
+        <br />
+        <p>You can find me on Mastodon:&nbsp;<a href="https://piaille.fr/@boogheta" target="_blank"
+            rel="noopener">@boogheta@piaille.fr</a>, Twitter:&nbsp;<a href="https://twitter.com/boogheta"
+            target="_blank" rel="noopener">@boogheta</a> or&nbsp;<a href="https://github.com/boogheta"
+            rel="noopener">GitHub</a>.</p>
       </div>
       <button id="close-help" class="close-button tooltip" tooltip="close info box">
         <img src="./images/close.svg" alt="close-help-box" />
