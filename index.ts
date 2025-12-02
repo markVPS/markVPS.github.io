@@ -2379,7 +2379,7 @@ function readURL() {
       " ";
   const titleElement = document.querySelector("title");
   if (titleElement) {
-    titleElement.innerHTML = "MARVEL graphs &mdash; Map of " + title + (selectedNodeLabel || "");
+    titleElement.innerHTML = "Aesthetic Wiki graphs &mdash; Map of " + title + (selectedNodeLabel || "");
   }
   const titleDiv = document.getElementById("title");
   if (titleDiv) {
