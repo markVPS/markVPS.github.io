@@ -39,7 +39,7 @@ const startYear = 1939,
     labelDensity: 0.5,
     labelGridCellSize: 300,
     hoverRenderer: drawHover,
-    zoomToSizeRatioFunction: (ratio) => Math.pow(ratio, 0.75),
+    zoomToSizeRatioFunction: (ratio: number) => Math.pow(ratio, 0.75),
     nodeProgramClasses: {
       circle: createNodeCompoundProgram([NodeHaloProgram, NodePointProgram]),
       image: createNodeCompoundProgram([
