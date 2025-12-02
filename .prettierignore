@@ -1,0 +1,14 @@
+node_modules/
+build/
+addon/
+*.min.js
+*.md
+*.json
+*.yml
+*.yaml
+*.gexf
+*.csv
+*.py
+data/
+fonts/
+images/

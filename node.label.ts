@@ -1,5 +1,5 @@
-import { Settings } from 'sigma/settings';
-import { NodeDisplayData, PartialButFor } from 'sigma/types';
+import { Settings } from "sigma/settings";
+import { NodeDisplayData, PartialButFor } from "sigma/types";
 
 const PADDING = 4;
 
@@ -9,14 +9,14 @@ function splitLabel(label) {
 
 function biggestPiece(pieces) {
   let big = "";
-  pieces.filter(piece => big.length < piece.length ? big = piece : null);
+  pieces.filter((piece) => (big.length < piece.length ? (big = piece) : null));
   return big;
 }
 
 function drawLabel(
   context: CanvasRenderingContext2D,
-  data: PartialButFor<NodeDisplayData, 'x' | 'y' | 'size' | 'label' | 'color'>,
-  settings: Settings
+  data: PartialButFor<NodeDisplayData, "x" | "y" | "size" | "label" | "color">,
+  settings: Settings,
 ): void {
   if (!data.label) return;
 
@@ -33,18 +33,15 @@ function drawLabel(
   context.font = `${weight} ${size}px ${font}`;
 
   const lineHeight = size + PADDING;
-  if (pieces.length > 1)
-    y -= lineHeight * pieces.length / 3;
+  if (pieces.length > 1) y -= (lineHeight * pieces.length) / 3;
 
-  pieces.forEach((piece, i) =>
-    context.fillText(piece, x, y + i * lineHeight)
-  );
+  pieces.forEach((piece, i) => context.fillText(piece, x, y + i * lineHeight));
 }
 
 function drawHover(
   context: CanvasRenderingContext2D,
-  data: PartialButFor<NodeDisplayData, 'x' | 'y' | 'size' | 'label' | 'color'>,
-  settings: Settings
+  data: PartialButFor<NodeDisplayData, "x" | "y" | "size" | "label" | "color">,
+  settings: Settings,
 ): void {
   const size = data.labelSize || settings.labelSize;
   const font = settings.labelFont;
@@ -59,8 +56,7 @@ function drawHover(
   context.fillStyle = "#555";
 
   context.beginPath();
-  if (!data.label)
-    context.arc(data.x, data.y, data.size + PADDING / 2, 0, Math.PI * 2);
+  if (!data.label) context.arc(data.x, data.y, data.size + PADDING / 2, 0, Math.PI * 2);
   else {
     const textWidth = context.measureText(biggestPiece(pieces)).width;
     const boxWidth = Math.round(textWidth + 5);
@@ -68,9 +64,7 @@ function drawHover(
 
     const radius = Math.max(data.size + PADDING, boxHeight / 2);
     const angleRadian = Math.asin(boxHeight / 2 / radius);
-    const xShift = Math.sqrt(
-      Math.abs(Math.pow(radius, 2) - Math.pow(boxHeight / 2, 2))
-    ),
+    const xShift = Math.sqrt(Math.abs(Math.pow(radius, 2) - Math.pow(boxHeight / 2, 2))),
       xMin = data.x + xShift,
       xMax = data.x + data.size + PADDING + boxWidth - boxHeight / 4,
       yMin = data.y - boxHeight / 2,
@@ -78,7 +72,7 @@ function drawHover(
 
     context.moveTo(xMin, yMax);
     context.lineTo(xMax, yMax);
-    context.arc(xMax, data.y, boxHeight /2, -Math.PI / 2, Math.PI / 2);
+    context.arc(xMax, data.y, boxHeight / 2, -Math.PI / 2, Math.PI / 2);
     context.lineTo(xMax, yMin);
     context.lineTo(xMin, yMin);
     context.arc(data.x, data.y, radius, angleRadian, -angleRadian);

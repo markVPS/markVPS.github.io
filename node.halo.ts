@@ -75,7 +75,7 @@ const UNIFORMS = ["u_sizeRatio", "u_correctionRatio", "u_matrix", "u_ignoreZoom"
 
 const { FLOAT, UNSIGNED_BYTE } = WebGLRenderingContext;
 
-export default class NodeHaloProgram extends NodeProgram<typeof UNIFORMS[number]> {
+export default class NodeHaloProgram extends NodeProgram<(typeof UNIFORMS)[number]> {
   getDefinition() {
     return {
       VERTICES: 3,

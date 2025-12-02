@@ -37,7 +37,9 @@ type ImageType = ImageLoading | ImageError | ImagePending | ImageReady;
  * hovered nodes (to prevent some flickering, mostly), this program must be
  * "built" for each sigma instance:
  */
-export default function getNodeProgramImage(maxTextureSize = MAX_TEXTURE_SIZE): NodeProgramConstructor {
+export default function getNodeProgramImage(
+  maxTextureSize = MAX_TEXTURE_SIZE,
+): NodeProgramConstructor {
   /**
    * These attributes are shared between all instances of this exact class,
    * returned by this call to getNodeProgramImage:
@@ -146,7 +148,17 @@ export default function getNodeProgramImage(maxTextureSize = MAX_TEXTURE_SIZE): 
         } else {
           dy = (image.height - image.width) / 2;
         }
-        ctx.drawImage(image, dx, dy, size, size, xOffset, yOffset, imageSizeInTexture, imageSizeInTexture);
+        ctx.drawImage(
+          image,
+          dx,
+          dy,
+          size,
+          size,
+          xOffset,
+          yOffset,
+          imageSizeInTexture,
+          imageSizeInTexture,
+        );
 
         // Update image state:
         images[id] = {
@@ -207,7 +219,7 @@ export default function getNodeProgramImage(maxTextureSize = MAX_TEXTURE_SIZE): 
 
   const UNIFORMS = ["u_sizeRatio", "u_pixelRatio", "u_matrix", "u_atlas"] as const;
 
-  return class NodeImageProgram extends NodeProgram<typeof UNIFORMS[number]> {
+  return class NodeImageProgram extends NodeProgram<(typeof UNIFORMS)[number]> {
     getDefinition() {
       return {
         VERTICES: 1,
@@ -239,7 +251,17 @@ export default function getNodeProgramImage(maxTextureSize = MAX_TEXTURE_SIZE): 
 
       this.texture = gl.createTexture() as WebGLTexture;
       gl.bindTexture(gl.TEXTURE_2D, this.texture);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 0]));
+      gl.texImage2D(
+        gl.TEXTURE_2D,
+        0,
+        gl.RGBA,
+        1,
+        1,
+        0,
+        gl.RGBA,
+        gl.UNSIGNED_BYTE,
+        new Uint8Array([0, 0, 0, 0]),
+      );
     }
 
     rebindTexture() {

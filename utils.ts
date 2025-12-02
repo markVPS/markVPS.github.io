@@ -1,8 +1,7 @@
 const DEBUG = false;
 
 function logDebug(action, vars = {}) {
-  if (DEBUG)
-    console.log(" -> " + action, vars);
+  if (DEBUG) console.log(" -> " + action, vars);
 }
 
 function hasClass(element, clss) {
@@ -18,60 +17,67 @@ function addClass(element, clss) {
 
 function rmClass(element, clss) {
   const classes = new Set(element.className.split(/\s+/));
-  if (classes.has(clss))
-    classes.delete(clss);
+  if (classes.has(clss)) classes.delete(clss);
   element.className = Array.from(classes).join(" ");
 }
 
 function switchClass(element, clss, condition) {
   const classes = new Set(element.className.split(/\s+/));
-  if (classes.has(clss))
-    classes.delete(clss);
-  if (condition)
-    classes.add(clss);
+  if (classes.has(clss)) classes.delete(clss);
+  if (condition) classes.add(clss);
   element.className = Array.from(classes).join(" ");
 }
 
-function fixImage(url, replacement=null) {
+function fixImage(url, replacement = null) {
   if (/image_not_available/.test(url)) {
-    if (replacement)
-      replacement.style.display = "block";
-    return '';
+    if (replacement) replacement.style.display = "block";
+    return "";
   }
-  if (replacement)
-    replacement.style.display = "none";
-  return url.replace(/^http:/, '');
+  if (replacement) replacement.style.display = "none";
+  return url.replace(/^http:/, "");
 }
 
 function formatNumber(x) {
-  return (x + "")
-    .replace(/(.)(.{3})$/, '<span class="shifted">$1</span>$2');
+  return (x + "").replace(/(.)(.{3})$/, '<span class="shifted">$1</span>$2');
 }
 
-const monthNames = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+const monthNames = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december",
+];
 function formatMonth(dat) {
   const d = new Date(dat);
   return monthNames[new Date(dat).getMonth()] + " " + dat.slice(0, 4);
 }
 
 // Lighten colors function copied from Chris Coyier https://css-tricks.com/snippets/javascript/lighten-darken-color/
-function lightenColor(col, amt=50) {
-  var usePound = false;
+function lightenColor(col, amt = 50) {
+  let usePound = false;
   if (col[0] === "#") {
     col = col.slice(1);
     usePound = true;
   }
-  var num = parseInt(col,16);
-  var r = (num >> 16) + amt;
+  const num = parseInt(col, 16);
+  let r = (num >> 16) + amt;
   if (r > 255) r = 255;
-  else if  (r < 0) r = 0;
-  var b = ((num >> 8) & 0x00FF) + amt;
+  else if (r < 0) r = 0;
+  let b = ((num >> 8) & 0x00ff) + amt;
   if (b > 255) b = 255;
-  else if  (b < 0) b = 0;
-  var g = (num & 0x0000FF) + amt;
+  else if (b < 0) b = 0;
+  let g = (num & 0x0000ff) + amt;
   if (g > 255) g = 255;
   else if (g < 0) g = 0;
-  return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
 function meanArray(arr) {
@@ -87,27 +93,29 @@ function divHeight(divId) {
 }
 
 function isTouchDevice() {
-  return (('ontouchstart' in window) ||
-     (navigator.maxTouchPoints > 0) ||
-     (navigator["msMaxTouchPoints"] > 0));
+  return (
+    "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator["msMaxTouchPoints"] > 0
+  );
 }
 
 function webGLSupport() {
   try {
-   var canvas = document.createElement('canvas');
-   return !!window.WebGLRenderingContext &&
-     (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
-  } catch(e) {
+    const canvas = document.createElement("canvas");
+    return (
+      !!window.WebGLRenderingContext &&
+      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+    );
+  } catch (e) {
     return false;
   }
-};
+}
 
 function rotatePosition(pos, angle) {
   return {
     x: pos.x * Math.cos(-angle) - pos.y * Math.sin(-angle),
-    y: pos.y * Math.cos(-angle) + pos.x * Math.sin(-angle)
+    y: pos.y * Math.cos(-angle) + pos.x * Math.sin(-angle),
   };
-};
+}
 
 function useWebWorker(script, inputData, callback) {
   const worker_blob = new Blob([script], { type: "application/javascript" });
@@ -118,21 +126,26 @@ function useWebWorker(script, inputData, callback) {
     worker.terminate();
   };
   worker.postMessage(inputData);
-};
+}
 
 function uncompress(compressed, method, callback) {
-  useWebWorker(`
+  useWebWorker(
+    `
     importScripts("${window.location.origin}/pako_inflate.min.js");
     self.onmessage = async (evt) => {
       const file = evt.data;
       const decompressed = pako.${method}(file, {to: "string"});
       self.postMessage(decompressed);
     };
-  `, compressed, callback);
-};
+  `,
+    compressed,
+    callback,
+  );
+}
 
 function buildComicsList(data, callback) {
-  useWebWorker(`
+  useWebWorker(
+    `
     self.onmessage = async (evt) => {
       const data = evt.data;
       const lightenColor = ${lightenColor.toString()};
@@ -148,19 +161,28 @@ function buildComicsList(data, callback) {
       );
       self.postMessage(list);
     };
-  `, data, callback);
+  `,
+    data,
+    callback,
+  );
 }
 
 export {
   logDebug,
-  hasClass, addClass, rmClass, switchClass,
+  hasClass,
+  addClass,
+  rmClass,
+  switchClass,
   fixImage,
-  formatNumber, formatMonth,
+  formatNumber,
+  formatMonth,
   lightenColor,
   meanArray,
-  divWidth, divHeight,
-  isTouchDevice, webGLSupport,
+  divWidth,
+  divHeight,
+  isTouchDevice,
+  webGLSupport,
   rotatePosition,
   uncompress,
-  buildComicsList
+  buildComicsList,
 };

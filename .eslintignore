@@ -1,0 +1,9 @@
+node_modules/
+build/
+addon/
+*.min.js
+*.py
+data/
+fonts/
+images/
+webpack.config.js
