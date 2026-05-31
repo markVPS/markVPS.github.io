@@ -1001,7 +1001,7 @@ function clickNode(node, updateURL = true, center = false) {
     nodeExtra.innerHTML +=
       '<p><a href="' +
       attrs.url +
-      '" target="_blank">More on Marvel.com…</a></p>';
+      '" target="_blank">More on Aesthetics Wiki…</a></p>';
   if (comicsReady) renderHistogram(node);
 
   selectSuggestions.selectedIndex =
